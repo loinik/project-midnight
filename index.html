@@ -75,15 +75,15 @@
             }
         }
 
-        if(Flags.touch) {
-            autoResize();
-        }
-        else {
-            autoResize();
-            window.addEventListener("resize", function(event) {
-                autoResize()
-            });
+        autoResize();
+        window.addEventListener("resize", function(event) {
+            autoResize()
+        });
 
+        if(Flags.touch) {
+            ScreenOrientation.addEventListener("change", function(event) {
+                autoResize();
+            });
         }
 
         document.addEventListener("keyup", function(event) {
