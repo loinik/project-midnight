@@ -118,7 +118,7 @@ class ar {
         if(info["scene"]) {
             parent.addEventListener("click", function(event){
                 document.querySelector("#scene").innerHTML = "";
-                import ("/mid/Ciftree/" + info["scene"] + ".js");
+                //import ("/mid/Ciftree/" + info["scene"] + ".js");
                 window[info["scene"]]().forEach(element => {
                     document.querySelector("#scene").append(element);
                 });                 
