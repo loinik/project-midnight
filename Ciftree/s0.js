@@ -6,7 +6,7 @@ const touch = (('ontouchstart' in window) || (navigator.maxTouchPoints > 0) || (
 
 var Flags = {
     Night_FL: false,
-    Touch: !touch
+    Touch: touch
 }
 
 //ЗДЕСЬ ВСЁ ХОРОШО, ПРОСТО ВРЕМЕННО, ПОКА НЕТ РЕАЛИЗАЦИЮЮ СМЕНЫ СЦЕН
