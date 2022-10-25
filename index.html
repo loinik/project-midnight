@@ -50,9 +50,18 @@
             document.querySelector("#scene").append(element);
         });
 
-        function autoResize() {
-            game.style.transform = "scale(" + window.innerHeight / 768 + ")";
-            cursor.style.transform = "scale(" + window.innerHeight / 768 + ")";
+        function autoResize(position = "landscape") {
+            switch(position) {
+                case "landscape":
+                    game.style.transform = "scale(" + window.innerHeight / 768 + ")";
+                    cursor.style.transform = "scale(" + window.innerHeight / 768 + ")";
+                    break;
+                case "portrait":
+                    game.style.transform = "scale(" + window.innerWidth / 768 + ")";
+                    cursor.style.transform = "scale(" + window.innerWidth / 768 + ")";
+                    break;
+            }
+            
         }
         
         function openFullscreen() {
@@ -67,7 +76,12 @@
 
         if(Flags.touch) {
             document.addEventListener('orientationchange', function(event) {
-                //autoResize()
+                if(window.innerHeight > window.innerWidth){
+                    autoResize("portrait");
+                }
+                else {
+                    autoResize("landscape");
+                }
             });
             //openFullscreen();
         }
