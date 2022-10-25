@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nancy Drew: Midnight in Salem</title>
+</head>
+<body>
+    <div id="cursor" style="position: absolute; z-index: 999"></div>
+    <main id="game">
+        
+        <div id="uiFrame" style="position: absolute; z-index: 2"></div>
+        <div id="scene" style="position: absolute; z-index: 1"></div>
+    </main>
+    <style>
+        * { 
+            margin: 0;
+            padding: 0;
+            font-family: "Tahoma";
+            cursor: none !important;
+        }
+        body {
+            background: black;
+            width: 100%;
+            height: 100%;
+            
+        }
+        #game {
+            width: 1024px;
+            height: 768px;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            margin: auto;
+            border: 0px solid white;
+            overflow: hidden;
+        }
+        img {
+            object-fit: cover;
+            min-width: none;
+        }
+    </style>
+    <script src="Rect.js"></script>
+    <script src="AR.js"></script>
+    <script src="CursorInit.js"></script>
+    
+    <script src="Ciftree/s0.js"></script>
+    <script src="Ciftree/s2600.js"></script>
+    <script src="Ciftree/s2601.js"></script>
+    <script src="Ciftree/s2602.js"></script>
+    <script src="Ciftree/s2603.js"></script>
+    <script src="Ciftree/s2610.js"></script>
+    <script src="Ciftree/s2611.js"></script>
+    <script src="Ciftree/s2612.js"></script>
+    <script src="Ciftree/s2613.js"></script>
+    <script src="Ciftree/s2620.js"></script>
+    <script src="Ciftree/s2621.js"></script>
+    <script src="Ciftree/s2622.js"></script>
+    <script src="Ciftree/s2623.js"></script>
+    <script src="Ciftree/s2625.js"></script>
+    <script src="Ciftree/UI_Frame_SC.js"></script>
+    <script src="Ciftree/UI_NotesTasklist_SC.js"></script>
+    <script src="Ciftree/Cursors_SC.js"></script>
+    <script>
+        var body = document.querySelector("body");
+        var gameFrame = document.querySelector("#game");
+        var cursor = document.querySelector("#cursor");
+
+        document.querySelector("#scene").innerHTML = "";
+        s2600().forEach(element => {
+            document.querySelector("#scene").append(element);
+        });
+
+        game.style.transform = "scale(" + window.innerHeight / 768 + ")";
+        cursor.style.transform = "scale(" + window.innerHeight / 768 + ")";
+        
+        window.addEventListener("resize", function(event) {
+            game.style.transform = "scale(" + window.innerHeight / 768 + ")";
+            cursor.style.transform = "scale(" + window.innerHeight / 768 + ")";
+        });
+        
+        function openFullscreen() {
+            if (body.requestFullscreen) {
+                body.requestFullscreen();
+            } else if (body.webkitRequestFullscreen) { /* Safari */
+                body.webkitRequestFullscreen();
+            } else if (body.msRequestFullscreen) { /* IE11 */
+                body.msRequestFullscreen();
+            }
+        }
+
+        //document.addEventListener("keypress", function(event) {   
+        //    //isKeyPressed[keyDownEvent.key] = true;
+        //    if (isKeyPressed["a"]) {
+        //        alert("hi");
+        //    }; 
+        //});
+
+        document.addEventListener("keyup", function(event) {
+            if (navigator.appVersion.indexOf('Mac') != -1 && (event.metaKey && event.key === "Enter")) {
+                openFullscreen();
+            } else if (event.altKey && event.key === "Enter") {
+                openFullscreen();
+            }
+        }, false);
+
+        //let magGlass = AR.Overlay({
+        //    ovl: "UI_Cursors_OVL",
+        //    source: [2, 130, 45, 174],
+        //    id: "MagGlass"
+        //});
+        //cursor.append(magGlass);
+
+        document.addEventListener("mousemove", function(event) {
+            let position = gameFrame.getBoundingClientRect();
+            
+            //alert(glass)
+            cursor.style.position = "absolute";
+            cursor.style.left = event.pageX + "px";
+            cursor.style.top = event.pageY + "px";
+            
+        }, false);
+    </script>
+</body>
+</html>
