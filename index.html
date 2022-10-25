@@ -76,14 +76,12 @@
         }
 
         if(Flags.touch) {
-            document.addEventListener('orientationchange', function(event) {
-                if(window.innerHeight > window.innerWidth){
-                    autoResize("portrait");
-                }
-                else {
-                    autoResize("landscape");
-                }
-            });
+            if(window.innerHeight > window.innerWidth){
+                autoResize("portrait");
+            }
+            else {
+                autoResize("landscape");
+            }
             //openFullscreen();
         }
         else {
