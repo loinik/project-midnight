@@ -9,6 +9,10 @@ var Flags = {
     Touch: touch
 }
 
+if (Flags.Touch) {
+    document.querySelector("body").classList.add("touch");
+}
+
 //ЗДЕСЬ ВСЁ ХОРОШО, ПРОСТО ВРЕМЕННО, ПОКА НЕТ РЕАЛИЗАЦИЮЮ СМЕНЫ СЦЕН
 /*var splashSFX = AR.Sound({
     sounds: "VEN_Splash_SFX",

@@ -12,10 +12,12 @@ body {
     background: black;
     width: 100%;
     height: 100%;
-    padding-bottom: env(safe-area-inset-bottom);
 }
 body .touchNAV {
     visibility: hidden !important;
+}
+body.touch #cursor {
+    display: none;
 }
 body.navHint .touchNAV {
     visibility: visible !important;
