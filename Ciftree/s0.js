@@ -2,7 +2,7 @@ const game = document.querySelector("#game");
 const Rect = new rect();
 const AR = new ar();
 const CursorInit = new cursorInit();
-const touch = (('ontouchstart' in window) || (navigator.maxTouchPoints > 0) || (navigator.msMaxTouchPoints > 0));
+const touch = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0) || (navigator.msMaxTouchPoints > 0);
 
 var Flags = {
     Night_FL: false,
