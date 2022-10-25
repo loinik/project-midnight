@@ -51,15 +51,10 @@
         });
 
         function autoResize() {
-            game.style.transform = "scale(" + window.innerHeight / 768 + ")";
-            cursor.style.transform = "scale(" + window.innerHeight / 768 + ")";
+            body.style.transform = "scale(" + window.innerHeight / 768 + ")";
+            //cursor.style.transform = "scale(" + window.innerHeight / 768 + ")";
         }
-        autoResize();
         
-        window.addEventListener("resize", function(event) {
-            autoResize()
-        });
-
         function openFullscreen() {
             if (body.requestFullscreen) {
                 body.requestFullscreen();
@@ -72,9 +67,17 @@
 
         if(Flags.touch) {
             document.addEventListener('orientationchange', function(event) {
-                autoResize()
+                //autoResize()
             });
             openFullscreen();
+        }
+        else {
+            autoResize();
+        
+            window.addEventListener("resize", function(event) {
+                autoResize()
+            });
+
         }
 
         document.addEventListener("keyup", function(event) {
