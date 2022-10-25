@@ -48,14 +48,22 @@
             document.querySelector("#scene").append(element);
         });
 
-        game.style.transform = "scale(" + window.innerHeight / 768 + ")";
-        cursor.style.transform = "scale(" + window.innerHeight / 768 + ")";
-        
-        window.addEventListener("resize", function(event) {
+        function autoResize() {
             game.style.transform = "scale(" + window.innerHeight / 768 + ")";
             cursor.style.transform = "scale(" + window.innerHeight / 768 + ")";
+        }
+        autoResize();
+        
+        window.addEventListener("resize", function(event) {
+            autoResize()
         });
         
+        document.addEventListener('orientationchange', function(event) {
+            autoResize()
+        });
+
+        
+
         function openFullscreen() {
             if (body.requestFullscreen) {
                 body.requestFullscreen();
