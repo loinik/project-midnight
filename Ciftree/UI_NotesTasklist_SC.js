@@ -43,13 +43,13 @@ var collapseSound = AR.Sound({
 var expandTasklistButton = AR.Button({
     hs: AR.Hotspot({
         ref: "UI_Frame_OVL",
-        source: [13, 171, 162, 40],
+        source: [13, 299, 162, 40],
         onScreen: [744, 242, 162, 40],
         cursor: "MenuHot"
     }),
     overOvl: AR.Overlay({
       ovl: "UI_Frame_OVL",
-      source: [969, 175, 994, 200],
+      source: [969, 303, 994, 200],
       onScreen: [836, 254, 861, 279],
     }),
     z: 2,
@@ -61,13 +61,13 @@ var expandTasklistButton = AR.Button({
 var collapseTasklistButton = AR.Button({
     hs: AR.Hotspot({
         ref: "UI_Frame_OVL",
-        source: [13, 171, 162, 40],
+        source: [13, 299, 162, 40],
         onScreen: [744, 242, 162, 40],
         cursor: "MenuHot"
     }),
     overOvl: AR.Overlay({
       ovl: "UI_Frame_OVL",
-      source: [942, 175, 967, 200],
+      source: [942, 303, 967, 200],
       onScreen: [836, 254, 861, 279],
     }),
     z: 2,
@@ -81,13 +81,13 @@ var collapseTasklistButton = AR.Button({
 var expandNotesButton = AR.Button({
     hs: AR.Hotspot({
         ref: "UI_Frame_OVL",
-        source: [135, 171, 162, 40],
+        source: [135, 299, 162, 40],
         onScreen: [866, 242, 162, 40],
         cursor: "MenuHot"
     }),
     overOvl: AR.Overlay({
       ovl: "UI_Frame_OVL",
-      source: [969, 175, 994, 200],
+      source: [969, 303, 994, 200],
       onScreen: [989, 252, 1014, 277]
     }),
     z: 3,
@@ -99,13 +99,13 @@ var expandNotesButton = AR.Button({
 var collapseNotesButton = AR.Button({
     hs: AR.Hotspot({
         ref: "UI_Frame_OVL",
-        source: [135, 171, 162, 40],
+        source: [135, 299, 162, 40],
         onScreen: [866, 242, 162, 40],
         cursor: "MenuHot"
     }),
     overOvl: AR.Overlay({
       ovl: "UI_Frame_OVL",
-      source: [942, 175, 967, 200],
+      source: [942, 303, 967, 200],
       onScreen: [989, 252, 1014, 277],
     }),
     z: 3,
@@ -142,7 +142,7 @@ var collapseButton = AR.Button({
     }),
     overOvl: AR.Overlay({
       ovl: "UI_Frame_OVL",
-      source: [942, 175, 967, 200],
+      source: [942, 303, 967, 200],
       onScreen: [876, 729, 901, 754]
     }),
     active: true,
@@ -153,7 +153,7 @@ var collapseButton = AR.Button({
 
 var expandedShownTasklistArrowOvl = AR.Overlay({
     ovl: "UI_Frame_OVL",
-    source: [942, 148, 967, 173],
+    source: [942, 276, 967, 173],
     onScreen: [836, 254, 861, 279],
     z: 1,
     active: false,
@@ -161,7 +161,7 @@ var expandedShownTasklistArrowOvl = AR.Overlay({
 });
 var expandedShownNotesArrowOvl = AR.Overlay({
     ovl: "UI_Frame_OVL",
-    source: [942, 148, 967, 173],
+    source: [942, 276, 967, 173],
     onScreen: [989, 252, 1014, 277],
     z: 1,
     active: false,
@@ -169,7 +169,7 @@ var expandedShownNotesArrowOvl = AR.Overlay({
 });
 var expandedHiddenTasklistArrowOvl = AR.Overlay({
     ovl: "UI_Frame_OVL",
-    source: [969, 148, 994, 166],
+    source: [969, 276, 994, 166],
     onScreen: [836, 252, 861, 270],
     z: 1,
     active: false,
@@ -177,7 +177,7 @@ var expandedHiddenTasklistArrowOvl = AR.Overlay({
 });
 var expandedHiddenNotesArrowOvl = AR.Overlay({
     ovl: "UI_Frame_OVL",
-    source: [969, 148, 994, 166],
+    source: [969, 276, 994, 166],
     onScreen: [989, 250, 1014, 268],
     z: 1,
     active: false,
@@ -185,14 +185,14 @@ var expandedHiddenNotesArrowOvl = AR.Overlay({
 });
 var backdropOvl = AR.Overlay({
     ovl: "UI_Frame_OVL",
-    source: [686, 130, 940, 215],
+    source: [686, 258, 940, 215],
     onScreen: [763, 676, 1017, 761],
     z: -4,
     active: true
 });
 var tasklistOvl = AR.Overlay({
     ovl: "UI_Frame_OVL",
-    source: [2, 175, 297, 694],
+    source: [2, 303, 297, 694],
     onScreen: [729, 242, 1024, 761],
     z: -1,
     active: true,
@@ -200,7 +200,7 @@ var tasklistOvl = AR.Overlay({
 });
 var notesOVL = AR.Overlay({
     ovl: "UI_Frame_OVL",
-    source: [299, 175, 594, 694],
+    source: [299, 303, 594, 694],
     onScreen: [729, 242, 1024, 761],
     z: -1,
     active: false,

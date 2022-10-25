@@ -5,7 +5,7 @@ function s2625() {
     });
     var locked = false;
     var backNAV = AR.Hotspot({
-        onScreen: [0, 590, 1024, 690],
+        onScreen: [0, 560, 1024, 690],
         scene: "s2623",
         cursor: "Back",
         active: function() {

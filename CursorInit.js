@@ -14,12 +14,10 @@ class cursorInit {
             }
         };
     }
-
     Set(type) {
         document.querySelectorAll("#cursor *").forEach(element => {
             element.style.visibility = "hidden";
         });
-        //alert(`#${type}`);
         document.querySelector(`#${type}`).style.visibility = "visible";
     }
 }

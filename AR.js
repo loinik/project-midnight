@@ -27,6 +27,10 @@ class ar {
         if(info["id"]) {
             Rectangle.id = info["id"];
         }
+
+        if(info["opacity"]) {
+            Rectangle.style.opacity = info["opacity"];
+        }
         
         Rectangle.style.zIndex = (info["z"] != null) ? info["z"] : 0;
         Rectangle.style.position = "absolute";
@@ -51,35 +55,37 @@ class ar {
     }
 
     Hotspot(info) {
+        let parent = document.createElement("div");
+
         let mouseArea = document.createElement("canvas");
         let width = info["onScreen"][2] - info["onScreen"][0];
         mouseArea.width = width;
         let height = info["onScreen"][3] - info["onScreen"][1];
         mouseArea.height = height;
 
-        mouseArea.style.position = "absolute";
-        mouseArea.style.left = info["onScreen"][0] + "px";
-        mouseArea.style.top = info["onScreen"][1] + "px";
+        parent.style.position = "absolute";
+        parent.style.left = info["onScreen"][0] + "px";
+        parent.style.top = info["onScreen"][1] + "px";
         //mouseArea.style.cursor = "pointer";
 
         if(info["active"] == false) {
-            mouseArea.style.visibility = "hidden";
+            parent.style.visibility = "hidden";
         }
 
         if(info["z"]) {
-            mouseArea.style.zIndex = info["z"];
+            parent.style.zIndex = info["z"];
         }
         
         if(info["id"]) {
-            mouseArea.id = info["id"];
+            parent.id = info["id"];
         }
 
         if(info["cursor"]) {
             //alert(info["cursor"]);
-            mouseArea.addEventListener("mouseover", function(event) {
+            parent.addEventListener("mouseover", function(event) {
                 CursorInit.Set(info["cursor"]);
             });
-            mouseArea.addEventListener("mouseleave", function(event) {
+            parent.addEventListener("mouseleave", function(event) {
                 CursorInit.Set("MagGlass");
             });
         }
@@ -103,25 +109,29 @@ class ar {
         //}
 
         if(info["OnUp"] != undefined) {
-            mouseArea.addEventListener("click", function(event){
+            parent.addEventListener("click", function(event){
                 
                 info["OnUp"]();
             });
         }
 
         if(info["scene"]) {
-            mouseArea.addEventListener("click", function(event){
+            parent.addEventListener("click", function(event){
                 document.querySelector("#scene").innerHTML = "";
                 import ("/mid/Ciftree/" + info["scene"] + ".js");
-                //alert(info["scene"]);
                 window[info["scene"]]().forEach(element => {
-                    
                     document.querySelector("#scene").append(element);
                 });                 
-            });   
+            });
+            if(Flags.Touch && info["hint"] != false) {
+                let navCursor = AR.Clone(info["cursor"]);
+                navCursor.classList.add("touchNAV");
+                parent.append(navCursor);
+            }
+            
         }
-
-        return mouseArea;
+        parent.append(mouseArea);
+        return parent;
     }
 
     Button (info) {
@@ -165,34 +175,20 @@ class ar {
         
     }
 
-    Button_obj (info) {
-        let o = document.createElement("div");
-
-        if(info["active"] == false) {
-            return "";
+    Clone(id) {
+        let node = document.querySelector(`#${id}`);
+        let newNode;
+        if(node.tagName === "CANVAS") {
+            newNode = document.createElement("canvas");
+            let context = newNode.getContext("2d");
+            newNode.width = node.width;
+            newNode.height = node.height;
+            context.drawImage(node, 0, 0);
+        } else {
+            newNode = node.cloneNode(true);
         }
-
-        let hs = AR.Hotspot(info["hs"]);
-        let overOvl = AR.Overlay(info["overOvl"]);
-
-        overOvl.style.opacity = 0;
-
-        hs.addEventListener("mouseover", function(event){
-            overOvl.style.opacity = 1;
-        });
-
-        hs.addEventListener("mouseleave", function(event){
-            overOvl.style.opacity = 0;
-        });
-
-        hs.addEventListener("click", function(event){
-            info["OnUp"](o);
-        });
-        //hs.style.zIndex = 10;
-
-        o.append(overOvl, hs);
-        return o;
-        
+        newNode.removeAttribute("id");
+        return newNode;
     }
 
     Transformer(info) {

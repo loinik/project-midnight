@@ -6,7 +6,7 @@ function s2613() {
     var locked = false;
     var rightNAV = AR.Hotspot({
         scene: "s2610",
-        onScreen: [824, 0, 1024, 580],
+        onScreen: [824, 0, 1024, 690],
         cursor: "Right",
         active: function() {
             //return not locked
@@ -14,14 +14,14 @@ function s2613() {
     });
     var leftNAV = AR.Hotspot({
         scene: "s2612",
-        onScreen: [0, 0, 200, 580],
+        onScreen: [0, 0, 200, 690],
         cursor: "Left",
         active: function() {
             //return not locked
         }
     });
     var backNAV = AR.Hotspot({
-        onScreen: [0, 590, 1024, 690],
+        onScreen: [0, 560, 1024, 690],
         scene: "s2611",
         cursor: "UTurn",
         active: function() {
