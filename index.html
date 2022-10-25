@@ -5,14 +5,16 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="minimal-ui, width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <meta name="mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-capable" content="yes" /> 
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <link rel="icon" type="image/png" href="http://example.com/image.png"/>
+    <meta name="apple-mobile-web-app-title" content="Nancy Drew">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
     <title>Nancy Drew: Midnight in Salem</title>
     <link rel="stylesheet" href="common.css">
 </head>
 <body>
     <div id="cursor" style="position: absolute; z-index: 999"></div>
     <main id="game">
-        
         <div id="uiFrame" style="position: absolute; z-index: 2"></div>
         <div id="scene" style="position: absolute; z-index: 1"></div>
     </main>
@@ -57,12 +59,6 @@
         window.addEventListener("resize", function(event) {
             autoResize()
         });
-        
-        document.addEventListener('orientationchange', function(event) {
-            autoResize()
-        });
-
-        
 
         function openFullscreen() {
             if (body.requestFullscreen) {
@@ -72,6 +68,13 @@
             } else if (body.msRequestFullscreen) { /* IE11 */
                 body.msRequestFullscreen();
             }
+        }
+
+        if(Flags.touch) {
+            document.addEventListener('orientationchange', function(event) {
+                autoResize()
+            });
+            openFullscreen();
         }
 
         document.addEventListener("keyup", function(event) {
