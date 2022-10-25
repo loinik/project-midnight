@@ -50,14 +50,14 @@
             document.querySelector("#scene").append(element);
         });
 
-        function autoResize(position = "landscape") {
+        function autoResize() {
+            let position = (window.innerHeight > window.innerWidth) ? "portrait" : "landscape";
             switch(position) {
                 case "landscape":
                     game.style.transform = "scale(" + window.innerHeight / 768 + ")";
                     cursor.style.transform = "scale(" + window.innerHeight / 768 + ")";
                     break;
                 case "portrait":
-                    alert("hi");
                     game.style.transform = "scale(" + window.innerWidth / 768 + ")";
                     cursor.style.transform = "scale(" + window.innerWidth / 768 + ")";
                     break;
@@ -76,13 +76,7 @@
         }
 
         if(Flags.touch) {
-            if(window.innerHeight > window.innerWidth){
-                autoResize("portrait");
-            }
-            else {
-                autoResize("landscape");
-            }
-            //openFullscreen();
+            autoResize();
         }
         else {
             autoResize();
