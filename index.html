@@ -51,8 +51,8 @@
         });
 
         function autoResize() {
-            body.style.transform = "scale(" + window.innerHeight / 768 + ")";
-            //cursor.style.transform = "scale(" + window.innerHeight / 768 + ")";
+            game.style.transform = "scale(" + window.innerHeight / 768 + ")";
+            cursor.style.transform = "scale(" + window.innerHeight / 768 + ")";
         }
         
         function openFullscreen() {
@@ -72,11 +72,10 @@
             //openFullscreen();
         }
         else {
-            //autoResize();
-        //
-            //window.addEventListener("resize", function(event) {
-            //    autoResize()
-            //});
+            autoResize();
+            window.addEventListener("resize", function(event) {
+                autoResize()
+            });
 
         }
 

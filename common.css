@@ -18,9 +18,12 @@
 }
 body {
     background: black;
-    height: 100vh;
-    width: calc(100vh / 3 * 4);
+    height: 100%;
+    width: 100%;
     overflow: hidden;
+    position: absolute;
+    top: 0;
+    left: 0;
 }
 body .touchNAV {
     visibility: hidden !important;
