@@ -19,7 +19,8 @@
 body {
     background: black;
     height: 100vh;
-    width: calc(100vw / 3 * 4);
+    width: calc(100vh / 3 * 4);
+    overflow: hidden;
 }
 body .touchNAV {
     visibility: hidden !important;
