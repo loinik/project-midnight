@@ -1,20 +1,11 @@
-function s2602() {
+function s2800() {
     var sum = AR.Summary({
-        env: "PHH",
-        bg: "PHH_Node" + (Flags.Night_FL ? "Night" : "") + "0002_BG"
+        env: "NBH",
+        bg: "NBH_Node" + (Flags.Night_FL ? "Night" : "") + "0000_BG"
     });
     var locked = false;
-    var forwardNAV = AR.Hotspot({
-        scene: "s2604",
-        onScreen: [239, 18, 790, 640],
-        cursor: "Manipulate",
-        hint: false,
-        active: function() {
-            //return not locked
-        }
-    });
     var rightNAV = AR.Hotspot({
-        scene: "s2603",
+        scene: "s2801",
         onScreen: [824, 0, 1024, 690],
         cursor: "Right",
         active: function() {
@@ -22,7 +13,7 @@ function s2602() {
         }
     });
     var leftNAV = AR.Hotspot({
-        scene: "s2601",
+        scene: "s2803",
         onScreen: [0, 0, 200, 690],
         cursor: "Left",
         active: function() {
@@ -31,11 +22,11 @@ function s2602() {
     });
     var backNAV = AR.Hotspot({
         onScreen: [0, 560, 1024, 690],
-        scene: "s2600",
+        scene: "s2802",
         cursor: "UTurn",
         active: function() {
             //return not locked
         }
     });
-    return [sum, forwardNAV, rightNAV, leftNAV, backNAV];
+    return [sum, rightNAV, leftNAV, backNAV];
 }
