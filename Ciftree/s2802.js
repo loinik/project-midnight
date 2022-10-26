@@ -6,7 +6,7 @@ function s2802() {
     var locked = false;
     var forwardNAV = AR.Hotspot({
         scene: "s2700",
-        onScreen: [200, 70, 820, 640],
+        onScreen: [200, 70, 824, 640],
         cursor: "Forward",
         active: function() {
             //return not locked
