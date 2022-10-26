@@ -6,7 +6,7 @@ function s2604() {
     var locked = false;
     var forwardNAV = AR.Hotspot({
         scene: "s2701",
-        onScreen: [239, 70, 790, 640],
+        onScreen: [239, 70, 785, 640],
         cursor: "Forward",
         OnDone: function() {
             closeDoorSFX.Restart()
