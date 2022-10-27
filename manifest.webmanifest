@@ -1,0 +1,16 @@
+{
+    "name": "Nancy Drew: Midnight in Salem",
+    "short_name": "Nancy Drew",
+    "description": "Try the classic view of Midnight in Salem!",
+    "display": "fullscreen",
+    "icons": [
+      {
+        "src": "touch-icon.png",
+        "sizes": "824x824",
+        "type": "image/png"
+      }
+    ],
+    "theme_color": "#5D93BC",
+    "background_color": "#5D93BC",
+    "start_url": "index.html"
+  }
