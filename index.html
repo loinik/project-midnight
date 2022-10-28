@@ -73,8 +73,8 @@
             let position = (window.innerHeight > window.innerWidth) ? "portrait" : "landscape";
             switch(position) {
                 case "landscape":
-                    game.style.transform = "scale(" + window.innerHeight / 768 + ")";
-                    cursor.style.transform = "scale(" + window.innerHeight / 768 + ")";
+                    game.style.transform = "scale(" + (window.innerHeight - parseInt(getComputedStyle(document.documentElement).getPropertyValue("--sab"))) / 768 + ")";
+                    cursor.style.transform = "scale(" + (window.innerHeight - parseInt(getComputedStyle(document.documentElement).getPropertyValue("--sab"))) / 768 + ")";
                     break;
                 case "portrait":
                     game.style.transform = "scale(" + window.innerWidth / 1024 + ")";
