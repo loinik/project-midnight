@@ -1,19 +1,4 @@
-const game = document.querySelector("#game");
-const Rect = new rect();
-const AR = new ar();
-const CursorInit = new cursorInit();
-const touch = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0) || (navigator.msMaxTouchPoints > 0);
-
-var Flags = {
-    Night_FL: false,
-    Touch: touch
-}
-
-if (Flags.Touch) {
-    document.querySelector("body").classList.add("touch");
-}
-
-//ЗДЕСЬ ВСЁ ХОРОШО, ПРОСТО ВРЕМЕННО, ПОКА НЕТ РЕАЛИЗАЦИЮЮ СМЕНЫ СЦЕН
+//ЗДЕСЬ ВСЁ ХОРОШО, ПРОСТО ВРЕМЕННО, ПОКА НЕТ РЕАЛИЗАЦИЮЮ СМЕНЫ СЦЕН И ДРУГОГО ПОРЯДКА ДЕЙСТВИЙ
 /*var splashSFX = AR.Sound({
     sounds: "VEN_Splash_SFX",
     channel: "Theme",

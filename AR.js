@@ -207,6 +207,20 @@ class ar {
         if(info["volume"]) snd.volume = info["volume"];
         snd.currentTime = 0;
 
+        snd.addEventListener("play", function(event) {
+            if(info["sounds"] == autotext[info["sounds"]]) {
+                
+            }
+        });
+        let text = AR.Text({
+            text: autotext[info["sounds"]],
+            onScreen: [102, 650, 784, 693],
+            useAutotext: true,
+            active: false
+        });
+        game.append(text);
+        
+
         if(info["active"] == true) {
             var sound = document.createElement("audio");
             sound.id = info["sounds"];
@@ -223,6 +237,26 @@ class ar {
             return snd;
         }
         
+    }
+
+    Text(info) {
+        let Text = document.createElement("div");
+        Text.style.position = "absolute";
+        Text.style.zIndex = 5;
+
+        var onScreen = Rect.New(info["onScreen"][0], info["onScreen"][1], info["onScreen"][2], info["onScreen"][3]);
+
+        Text.style.top = onScreen.y + "px";
+        Text.style.left = onScreen.x + "px";
+        Text.style.width = onScreen.width + "px";
+        Text.style.height = onScreen.height + "px";
+        //alert(onScreen.width + "px");
+
+        Text.classList.add("text");
+
+        Text.append(info["text"]);
+        return Text;
+
     }
 
     Movie(info) {

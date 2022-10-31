@@ -36,5 +36,6 @@ function s2600() {
             //return not locked
         }
     });
+    //alert(autotext["SB_Weapons06_SFX"]);
     return [sum, rightNAV, leftNAV, backNAV];
 }

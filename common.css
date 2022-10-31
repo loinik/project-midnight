@@ -23,6 +23,9 @@
     -ms-user-select: none; /* Internet Explorer/Edge */
     user-select: none;
 }
+*::-webkit-scrollbar {
+    display: none; 
+}
 body {
     background: black;
     position: relative;
@@ -66,6 +69,9 @@ img {
     pointer-events: none;
     user-select: none;
 }
-*::-webkit-scrollbar {
-    display: none; 
+div.text {
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }

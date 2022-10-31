@@ -24,6 +24,24 @@
     <script src="Rect.js"></script>
     <script src="AR.js"></script>
     <script src="CursorInit.js"></script>
+    <script src="Autotext.js"></script>
+
+    <script src="Boot.js"></script>
+
+    <script src="Ciftree/UI_Frame_SC.js"></script>
+    <script src="Ciftree/UI_NotesTasklist_SC.js"></script>
+    <script src="Ciftree/Cursors_SC.js"></script>
+    <script src="Ciftree/Arial_12_SC.js"></script>
+    <script src="Ciftree/autotext_SC.js"></script>
+    <script src="Ciftree/AutotextBoot_SC.js"></script>
+    <script src="Ciftree/Cellphone_Text_SC.js"></script>
+    <script src="Ciftree/Fonts_SC.js"></script>
+    <script src="Ciftree/Notes_Text_SC.js"></script>
+    <script src="Ciftree/Project_Text_SC.js"></script>
+    <script src="Ciftree/TaskHint_Text_SC.js"></script>
+    <script src="Ciftree/Texting_Text_SC.js"></script>
+    <script src="Ciftree/Tutorial_Text_SC.js"></script>
+    <script src="Ciftree/UI_Text_SC.js"></script>
     
     <script src="Ciftree/s0.js"></script>
     <script src="Ciftree/s2600.js"></script>
@@ -55,74 +73,12 @@
     <script src="Ciftree/s2816.js"></script>
     <script src="Ciftree/s2817.js"></script>
     <script src="Ciftree/s2818.js"></script>
-    <script src="Ciftree/UI_Frame_SC.js"></script>
-    <script src="Ciftree/UI_NotesTasklist_SC.js"></script>
-    <script src="Ciftree/Cursors_SC.js"></script>
 
     <script>
-        var body = document.querySelector("body");
-        var gameFrame = document.querySelector("#game");
-        var cursor = document.querySelector("#cursor");
-
         document.querySelector("#scene").innerHTML = "";
         s2600().forEach(element => {
             document.querySelector("#scene").append(element);
         });
-
-        function autoResize() {
-            let position = (window.innerHeight > window.innerWidth) ? "portrait" : "landscape";
-            switch(position) {
-                case "landscape":
-                    game.style.transform = "scale(" + (window.innerHeight - parseInt(getComputedStyle(document.documentElement).getPropertyValue("--sab"))) / 768 + ")";
-                    cursor.style.transform = "scale(" + (window.innerHeight - parseInt(getComputedStyle(document.documentElement).getPropertyValue("--sab"))) / 768 + ")";
-                    break;
-                case "portrait":
-                    game.style.transform = "scale(" + window.innerWidth / 1024 + ")";
-                    cursor.style.transform = "scale(" + window.innerWidth / 1024 + ")";
-                    break;
-            }
-            
-        }
-        
-        function openFullscreen() {
-            if (body.requestFullscreen) {
-                body.requestFullscreen();
-            } else if (body.webkitRequestFullscreen) { /* Safari */
-                body.webkitRequestFullscreen();
-            } else if (body.msRequestFullscreen) { /* IE11 */
-                body.msRequestFullscreen();
-            }
-        }
-
-        autoResize();
-        window.addEventListener("resize", function(event) {
-            autoResize()
-        });
-
-        if(Flags.touch) {
-            ScreenOrientation.addEventListener("change", function(event) {
-                autoResize();
-            });
-        }
-
-        document.addEventListener("keyup", function(event) {
-            if (navigator.appVersion.indexOf('Mac') != -1 && (event.metaKey && event.key === "Enter")) {
-                openFullscreen();
-            } else if (event.altKey && event.key === "Enter") {
-                openFullscreen();
-            }
-        }, false);
-
-        document.addEventListener("mousemove", function(event) {
-            let position = gameFrame.getBoundingClientRect();
-            
-            //alert(glass)
-            cursor.style.position = "absolute";
-            cursor.style.left = event.pageX + "px";
-            cursor.style.top = event.pageY + "px";
-            
-        }, false);
-
     </script>
 </body>
 </html>
