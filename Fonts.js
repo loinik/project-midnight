@@ -1,12 +1,15 @@
 class fontsBoot {
-    Init() {
-
+    Init(fontsObj) {
+        Object.entries(fontsObj).forEach(([key, info]) => {
+            fonts[key] = {};
+            fonts[key]["family"] = info["family"];
+            fonts[key]["size"] = info["size"];
+        });
     }
 }
 class fontColorsInit {
     Create(colorObj) {
         Object.entries(colorObj).forEach(([key, value]) => {
-            //alert(key);
             colors[key] = value;
         }); 
     }

@@ -81,7 +81,6 @@ class ar {
         }
 
         if(info["cursor"]) {
-            //alert(info["cursor"]);
             parent.addEventListener("mouseover", function(event) {
                 CursorInit.Set(info["cursor"]);
             });
@@ -113,6 +112,7 @@ class ar {
                 
                 info["OnUp"]();
             });
+            parent.classList.add("gameNAV");
         }
 
         if(info["scene"]) {
@@ -128,7 +128,7 @@ class ar {
                 navCursor.classList.add("touchNAV");
                 parent.append(navCursor);
             }
-            
+            parent.classList.add("gameNAV");
         }
         parent.append(mouseArea);
         return parent;
@@ -217,14 +217,20 @@ class ar {
                         useAutotext: true,
                         active: false
                     });
+                    document.querySelectorAll(".gameNAV").forEach(gameNAV => {
+                        gameNAV.style.visibility = "hidden";
+                    });
                     game.append(text);
+
                 }
             }
         });
         
         snd.addEventListener("ended", function(event) {
             document.querySelector("#textPane").remove();
-            //alert("stop");
+            document.querySelectorAll(".gameNAV").forEach(gameNAV => {
+                gameNAV.style.visibility = "visible";
+            });
         });
 
         if(info["active"] == true) {
@@ -256,12 +262,15 @@ class ar {
         Text.style.left = onScreen.x + "px";
         Text.style.width = onScreen.width + "px";
         Text.style.height = onScreen.height + "px";
-        //alert(onScreen.width + "px");
 
         Text.classList.add("text");
 
+        let fontNum = (Font.Parse(info["text"])) ? Font.Parse(info["text"]) : 13;
+        let fontInfo = fonts[fontNum];
+
         Text.style.color = colors[Color.Parse(info["text"])];
-        Text.style.fontFamily = "Tahoma";
+        Text.style.fontFamily = fontInfo["family"];
+        Text.style.fontSize = fontInfo["size"] + "px";
 
         Text.id = "textPane";
 
