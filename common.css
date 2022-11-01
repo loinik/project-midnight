@@ -4,7 +4,6 @@
     --sab: env(safe-area-inset-bottom);
     --sal: env(safe-area-inset-left);
 }
-
 * { 
     margin: 0;
     padding: 0;
@@ -21,6 +20,8 @@
     -moz-user-select: none; /* Old versions of Firefox */
     -ms-user-select: none; /* Internet Explorer/Edge */
     user-select: none;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 *::-webkit-scrollbar {
     display: none; 

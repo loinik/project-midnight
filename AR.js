@@ -217,7 +217,7 @@ class ar {
                         useAutotext: true,
                         active: false
                     });
-                    document.querySelectorAll(".gameNAV").forEach(gameNAV => {
+                    document.querySelectorAll(".gameNAV, .touchNAV").forEach(gameNAV => {
                         gameNAV.style.visibility = "hidden";
                     });
                     game.append(text);
@@ -228,7 +228,7 @@ class ar {
         
         snd.addEventListener("ended", function(event) {
             document.querySelector("#textPane").remove();
-            document.querySelectorAll(".gameNAV").forEach(gameNAV => {
+            document.querySelectorAll(".gameNAV, .touchNAV").forEach(gameNAV => {
                 gameNAV.style.visibility = "visible";
             });
         });
