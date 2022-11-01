@@ -208,18 +208,24 @@ class ar {
         snd.currentTime = 0;
 
         snd.addEventListener("play", function(event) {
-            if(info["sounds"] == autotext[info["sounds"]]) {
-                
+            let sound = info["sounds"];
+            for(var key in autotext){
+                if(info["sounds"] == key) {
+                    let text = AR.Text({
+                        text: autotext[sound],
+                        onScreen: [102, 650, 784, 693],
+                        useAutotext: true,
+                        active: false
+                    });
+                    game.append(text);
+                }
             }
         });
-        let text = AR.Text({
-            text: autotext[info["sounds"]],
-            onScreen: [102, 650, 784, 693],
-            useAutotext: true,
-            active: false
-        });
-        game.append(text);
         
+        snd.addEventListener("ended", function(event) {
+            document.querySelector("#textPane").remove();
+            //alert("stop");
+        });
 
         if(info["active"] == true) {
             var sound = document.createElement("audio");
@@ -254,9 +260,13 @@ class ar {
 
         Text.classList.add("text");
 
-        Text.append(info["text"]);
-        return Text;
+        Text.style.color = colors[Color.Parse(info["text"])];
+        Text.style.fontFamily = "Tahoma";
 
+        Text.id = "textPane";
+
+        Text.innerHTML = info["text"];
+        return Text;
     }
 
     Movie(info) {

@@ -4,6 +4,12 @@ function s2625() {
         bg: "PHL_Fans" + (Flags.Night_FL ? "Night" : "") + "_BG"
     });
     var locked = false;
+    let missing = AR.Sound({
+        sounds: "GTH113_SFX",
+        channel: "PlayerVoice",
+        volume: 0.75,
+        active: false
+    });
     var backNAV = AR.Hotspot({
         onScreen: [0, 560, 1024, 690],
         scene: "s2623",
@@ -12,5 +18,12 @@ function s2625() {
             //return not locked
         }
     });
-    return [sum, backNAV];
+    var lookNAV = AR.Hotspot({
+        onScreen: [200, 150, 824, 450],
+        cursor: "UseInventory",
+        OnUp: function() {
+            missing.play();
+        }
+    });
+    return [sum, backNAV, lookNAV];
 }

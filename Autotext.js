@@ -5,7 +5,6 @@ class autotextInit {
         }); 
     }
 }
-
 class autotextBoot {
     Load() {
         autotext = autotext_Temp;

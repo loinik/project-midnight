@@ -8,11 +8,16 @@ const AR = new ar();
 const CursorInit = new cursorInit();
 const AutotextInit = new autotextInit();
 const AutotextBoot = new autotextBoot();
+const Color = new color();
+const Font = new font();
+const FontsBoot = new fontsBoot();
+const FontColorsInit = new fontColorsInit();
 const touch = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0) || (navigator.msMaxTouchPoints > 0);
 
 var autotext_Temp = {};
 var autotext = {};
-var fonts;
+var fonts = {};
+var colors = {};
 
 var Flags = {
     Night_FL: false,
@@ -34,8 +39,7 @@ function autoResize() {
             game.style.transform = "scale(" + window.innerWidth / 1024 + ")";
             cursor.style.transform = "scale(" + window.innerWidth / 1024 + ")";
             break;
-    }
-    
+    }   
 }
 
 function openFullscreen() {
