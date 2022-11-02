@@ -1,72 +1,72 @@
 @font-face {
     font-family: "Tahoma", sans-serif;
-    src: url("Ciftree/Tahoma_Bold_FNT.ttf") format("truetype");
+    src: url("Ciftree/Tahoma_Bold_FNT.woff2") format("woff2");
     font-weight: bold;
     font-style: normal;
 }
 @font-face {
     font-family: "Tahoma", sans-serif;
-    src: url("Ciftree/Tahoma_BoldItalic_FNT.ttf") format("truetype");
+    src: url("Ciftree/Tahoma_BoldItalic_FNT.woff2") format("woff2");
     font-weight: bold;
     font-style: italic;
 }
 @font-face {
     font-family: "Tahoma", sans-serif;
-    src: url("Ciftree/Tahoma_Italic_FNT.ttf") format("truetype");
+    src: url("Ciftree/Tahoma_Italic_FNT.woff2") format("woff2");
     font-weight: normal;
     font-style: italic;
 }
 @font-face {
     font-family: "Tahoma", sans-serif;
-    src: url("Ciftree/Tahoma_Regular_FNT.ttf") format("truetype");
+    src: url("Ciftree/Tahoma_Regular_FNT.woff2") format("woff2");
     font-weight: normal;
     font-style: normal;
 }
 @font-face {
     font-family: "Arial", sans-serif;
-    src: url("Ciftree/Arial_Bold_FNT.ttf") format("truetype");
+    src: url("Ciftree/Arial_Bold_FNT.woff2") format("woff2");
     font-weight: bold;
     font-style: normal;
 }
 @font-face {
     font-family: "Arial", sans-serif;
-    src: url("Ciftree/Arial_BoldItalic_FNT.ttf") format("truetype");
+    src: url("Ciftree/Arial_BoldItalic_FNT.woff2") format("woff2");
     font-weight: bold;
     font-style: italic;
 }
 @font-face {
     font-family: "Arial", sans-serif;
-    src: url("Ciftree/Arial_Italic_FNT.ttf") format("truetype");
+    src: url("Ciftree/Arial_Italic_FNT.woff2") format("woff2");
     font-weight: normal;
     font-style: italic;
 }
 @font-face {
     font-family: "Arial", sans-serif;
-    src: url("Ciftree/Arial_Regular_FNT.ttf") format("truetype");
+    src: url("Ciftree/Arial_Regular_FNT.woff2") format("woff2");
     font-weight: normal;
     font-style: normal;
 }
 @font-face {
     font-family: "CourierNew", monospace;
-    src: url("Ciftree/CourierNew_Bold_FNT.ttf") format("truetype");
+    src: url("Ciftree/CourierNew_Bold_FNT.woff2") format("woff2");
     font-weight: bold;
     font-style: normal;
 }
 @font-face {
     font-family: "CourierNew", monospace;
-    src: url("Ciftree/CourierNew_BoldItalic_FNT.ttf") format("truetype");
+    src: url("Ciftree/CourierNew_BoldItalic_FNT.woff2") format("woff2");
     font-weight: bold;
     font-style: italic;
 }
 @font-face {
     font-family: "CourierNew", monospace;
-    src: url("Ciftree/CourierNew_Italic_FNT.ttf") format("truetype");
+    src: url("Ciftree/CourierNew_Italic_FNT.woff2") format("woff2");
     font-weight: normal;
     font-style: italic;
 }
 @font-face {
     font-family: "CourierNew", monospace;
-    src: url("Ciftree/CourierNew_Regular_FNT.ttf") format("truetype");
+    src: url("Ciftree/CourierNew_Regular_FNT.woff2") format("woff2");
     font-weight: normal;
     font-style: normal;
 }
