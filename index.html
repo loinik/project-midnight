@@ -28,6 +28,7 @@
     <script src="Autotext.js"></script>
     <script src="Fonts.js"></script>
     <script src="Color.js"></script>
+    <script src="FlagsInit.js"></script>
 
     <script src="Boot.js"></script>
 
@@ -45,6 +46,8 @@
     <script src="Ciftree/Texting_Text_SC.js"></script>
     <script src="Ciftree/Tutorial_Text_SC.js"></script>
     <script src="Ciftree/UI_Text_SC.js"></script>
+    <script src="Ciftree/TitleMenu_SC.js"></script>
+    <script src="Ciftree/Flags_SC.js"></script>
     
     <script src="Ciftree/s0.js"></script>
     <script src="Ciftree/s2600.js"></script>
@@ -78,6 +81,8 @@
     <script src="Ciftree/s2818.js"></script>
 
     <script>
+        UI_Frame_SC();
+        UI_NotesTasklist_SC();
         document.querySelector("#scene").innerHTML = "";
         s2600().forEach(element => {
             document.querySelector("#scene").append(element);

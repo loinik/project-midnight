@@ -14,8 +14,8 @@ function s2702() {
     });
     var backNAV = AR.Hotspot({
         onScreen: [0, 560, 1024, 690],
-        scene: "s2701",
-        cursor: "UTurn",
+        scene: "s2700",
+        cursor: "Back",
         active: function() {
             //return not locked
         }

@@ -39,8 +39,8 @@ function s2604() {
     });
     var backNAV = AR.Hotspot({
         onScreen: [0, 560, 1024, 690],
-        scene: "s2600",
-        cursor: "UTurn",
+        scene: "s2602",
+        cursor: "Back",
         OnDone: function() {
             closeDoorSFX.Restart()
         },

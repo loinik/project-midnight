@@ -13,16 +13,16 @@ const Font = new font();
 const FontsBoot = new fontsBoot();
 const FontColorsInit = new fontColorsInit();
 const touch = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0) || (navigator.msMaxTouchPoints > 0);
+const FlagsInit = new flagsInit();
 
+var Flags = {};
 var autotext_Temp = {};
 var autotext = {};
 var fonts = {};
 var colors = {};
 
-var Flags = {
-    Night_FL: false,
-    Touch: touch
-}
+Flags.Night_FL = false;
+Flags.Touch = touch;
 
 if (Flags.Touch) {
     document.querySelector("body").classList.add("touch");

@@ -66,7 +66,6 @@ class ar {
         parent.style.position = "absolute";
         parent.style.left = info["onScreen"][0] + "px";
         parent.style.top = info["onScreen"][1] + "px";
-        //mouseArea.style.cursor = "pointer";
 
         if(info["active"] == false) {
             parent.style.visibility = "hidden";
@@ -89,30 +88,22 @@ class ar {
             });
         }
 
-        //switch(info["cursor"]) {
-        //    case "MenuHot":
-        //        mouseArea.style.cursor = "pointer";
-        //        break;
-        //    case "Forward":
-        //        mouseArea.style.cursor = "n-resize";
-        //        break;
-        //    case "RightCorner":
-        //        mouseArea.style.cursor = "e-resize";
-        //        break;
-        //    case "LeftCorner":
-        //        mouseArea.style.cursor = "w-resize";
-        //        break;
-        //    case "Uturn":
-        //        mouseArea.style.cursor = "s-resize";
-        //        break;
-        //}
-
         if(info["OnUp"] != undefined) {
             parent.addEventListener("click", function(event){
-                
                 info["OnUp"]();
             });
-            parent.classList.add("gameNAV");
+            if((info["cursor"] != "MenuHot") && (info["cursor"] != "Menu")) {
+                parent.classList.add("gameNAV")
+            };
+        }
+
+        if(info["OnDown"] != undefined) {
+            parent.addEventListener("click", function(event){
+                info["OnDown"]();
+            });
+            if((info["cursor"] != "MenuHot") && (info["cursor"] != "Menu")) {
+                parent.classList.add("gameNAV")
+            };
         }
 
         if(info["scene"]) {
@@ -140,19 +131,8 @@ class ar {
             o.style.visibility = "hidden";
         }
         o.style.zIndex = info["z"];
-        //o.style.display = "block";
-        
-        //alert(test.getPropertyValue('position'));
-        //let test = info["hs"].style;
+
         o.style.position = "relative";
-        //o.style.left = 0;
-        //o.style.top = "1200px";
-        //o.style.position = test.getPropertyValue('position');
-        //o.style.left = test.getPropertyValue('left');
-        //o.style.top = test.getPropertyValue('top');
-        //o.style.display = "block";
-        //o.style.height = "100%";
-        //o.style.width = "100%";
         
         info["overOvl"].style.opacity = 0;
 
@@ -167,7 +147,15 @@ class ar {
         });
 
         info["hs"].addEventListener("click", function(event){
-            info["OnUp"](o);
+            if(info["OnUp"] != undefined) {
+                info["OnUp"](o);
+            }
+            else if(info["OnDown"] != undefined) {
+                info["OnDown"](o);
+            }
+            else {
+                
+            }
         });
 
         o.append(info["overOvl"], info["hs"]);
@@ -221,17 +209,23 @@ class ar {
                         allNAV.style.setProperty("visibility", "hidden", "important");
                     });
                     game.append(text);
-
                 }
             }
         });
         
-        snd.addEventListener("ended", function(event) {
-            document.querySelector("#textPane").remove();
-            document.querySelectorAll(".gameNAV, .touchNAV").forEach(allNAV => {
-                allNAV.style.setProperty("visibility", "visible", "important");
+        if(info["channel"] != "Theme") {
+            snd.addEventListener("ended", function(event) {
+                document.querySelector("#textPane").remove();
+                document.querySelectorAll(".gameNAV, .touchNAV").forEach(allNAV => {
+                    allNAV.style.setProperty("visibility", "visible", "important");
+                });
             });
-        });
+        }
+        
+
+        if(info["loop"] == true) {
+            snd.loop = true;
+        }
 
         if(info["active"] == true) {
             var sound = document.createElement("audio");
@@ -248,6 +242,8 @@ class ar {
         else {
             return snd;
         }
+
+        
         
     }
 
@@ -279,38 +275,64 @@ class ar {
     }
 
     Movie(info) {
-        var video = document.createElement("video");
-        if (info["OnEnd"]) {
-            video.id = info["id"];
+        let mp4 = "Video/" + info["movie"] + ".mp4";
+        let jpg = "Video/" + info["movie"] + ".jpg";
+        let png = "Video/" + info["movie"] + ".apng";
+
+        if(mp4) {
+            var video = document.createElement("video");
+            if (info["OnEnd"]) {
+                video.id = info["id"];
+            }
+
+            video.width = "1024";
+            video.height = "768";
+
+            var source = document.createElement("source");
+            source.src = "Video/" + info["movie"] + ".mp4";
+            source.type = "video/mp4";
+
+            video.append(source);
+
+
+            if (info["OnEnd"]) {
+                video.addEventListener('ended', function(event) {
+                    document.querySelector("#" + info["id"]).remove();
+                    info["OnEnd"]();
+                });
+            }
+            else {
+                video.addEventListener('ended', function(event) {
+                    document.querySelector("#" + info["id"]).remove();
+                });
+            }
+
+            document.querySelector("#game").append(video);
+
+            if (info["active"] == true) {
+                document.querySelector("#" + info["id"]).play();
+            }
         }
-        
-        video.width = "1024";
-        video.height = "768";
+        if(jpg) {
+            let Rectangle = document.createElement("canvas");
 
-        var source = document.createElement("source");
-        source.src = "Video/" + info["movie"] + ".mp4";
-        source.type = "video/mp4";
+            Rectangle.style.position = "absolute";
+            Rectangle.width = 1024;
+            Rectangle.height = 768;
 
-        video.append(source);
-        
-
-        if (info["OnEnd"]) {
-            video.addEventListener('ended', function(event) {
-                document.querySelector("#" + info["id"]).remove();
-                info["OnEnd"]();
-            });
-        }
-        else {
-            video.addEventListener('ended', function(event) {
-                document.querySelector("#" + info["id"]).remove();
-            });
-        }
-
-        
-        document.querySelector("#game").append(video);
-
-        if (info["active"] == true) {
-            document.querySelector("#" + info["id"]).play();
+            let image = new Image();
+            image.src = "Video/" + info["movie"] + ".jpg"; 
+            image.onload = function(){
+                let frameCanvas = Rectangle;
+                let ctx = frameCanvas.getContext("2d");
+                ctx.beginPath();
+                ctx.rect(0, 0, 1024, 768);
+                var pattern = ctx.createPattern(this, "no-repeat");
+                ctx.fillStyle = pattern;
+                ctx.fill();
+                ctx.closePath();    
+            };
+            return Rectangle;
         }
 
         
