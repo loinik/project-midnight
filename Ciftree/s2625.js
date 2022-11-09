@@ -23,6 +23,7 @@ function s2625() {
         cursor: "UseInventory",
         OnUp: function() {
             missing.play();
+            Flags.Night_FL = (Flags.Night_FL) ? false : true;
         }
     });
     return [sum, backNAV, lookNAV];
