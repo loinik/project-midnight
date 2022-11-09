@@ -1,7 +1,7 @@
 function s2702() {
     var sum = AR.Summary({
         env: "PHP",
-        bg: "PHP_DoorOpen" + (Flags.Night_FL ? "Night" : "") + "_BG"
+        bg: "PHP_Door" + (Flags.Night_FL ? "Night" : "") + "Open_BG"
     });
     var locked = false;
     var forwardNAV = AR.Hotspot({

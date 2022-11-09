@@ -50,7 +50,7 @@ function s2604() {
     });
     var openDoorOVL = AR.Overlay({
         ovl: "PHH_DoorOpen_OVL",
-        source: [0, 0, 551, 672],
+        source: (Flags.Night_FL) ? [553, 0, 1104, 672] : [0, 0, 551, 672],
         onScreen: [239, 18, 790, 690],
         active: true
     });
