@@ -20,10 +20,14 @@ function s2625() {
     });
     var lookNAV = AR.Hotspot({
         onScreen: [200, 150, 824, 450],
-        cursor: "UseInventory",
+        cursor: "Manipulate",
         OnUp: function() {
-            missing.play();
+            //missing.play();
             Flags.Night_FL = (Flags.Night_FL) ? false : true;
+            document.querySelector("#scene").innerHTML = "";
+            UI_Transition_SC().forEach(element => {
+                document.querySelector("#scene").append(element);
+            });
         }
     });
     return [sum, backNAV, lookNAV];

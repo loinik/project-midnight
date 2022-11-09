@@ -278,6 +278,7 @@ class ar {
         let mp4 = "Video/" + info["movie"] + ".mp4";
         let jpg = "Video/" + info["movie"] + ".jpg";
         let png = "Video/" + info["movie"] + ".apng";
+        let z = (info["z"]) ? info["z"] : 1;
 
         if(mp4) {
             var video = document.createElement("video");
@@ -286,7 +287,11 @@ class ar {
             }
 
             video.width = "1024";
-            video.height = "768";
+            video.height = "690";
+            video.style.zIndex = z;
+            video.style.position = "absolute";
+            video.style.top = "0px";
+            video.style.left = "0px";
 
             var source = document.createElement("source");
             source.src = "Video/" + info["movie"] + ".mp4";
@@ -319,6 +324,7 @@ class ar {
             Rectangle.style.position = "absolute";
             Rectangle.width = 1024;
             Rectangle.height = 768;
+            Rectangle.style.zIndex = z;
 
             let image = new Image();
             image.src = "Video/" + info["movie"] + ".jpg"; 
@@ -353,6 +359,7 @@ class ar {
         Rectangle.style.position = "absolute";
         Rectangle.width = 1024;
         Rectangle.height = 690;
+        Rectangle.style.zIndex = 0;
 
         var image = new Image();
         image.src = "Video/" + info["bg"] + ".jpg"; 
