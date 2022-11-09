@@ -24,7 +24,10 @@
     -moz-osx-font-smoothing: grayscale;
 }
 *::-webkit-scrollbar {
-    display: none; 
+    display: none !important; 
+}
+video::-webkit-media-controls {
+    display: none !important;
 }
 body {
     background: black;
