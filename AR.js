@@ -292,6 +292,7 @@ class ar {
             video.style.position = "absolute";
             video.style.top = "0px";
             video.style.left = "0px";
+            video.controls = false;
 
             var source = document.createElement("source");
             source.src = "Video/" + info["movie"] + ".mp4";
