@@ -6,7 +6,7 @@ function TitleMenu_SC() {
     let tileMenuBG = AR.Movie({
         movie: "MID_MainMenu_BG",
         //source: Viewport.uiSize,
-        //onScreen: Viewport.uiSize,
+        onScreen: Viewport.uiSize,
         pauseOnLastFrame: true
     })
     let titleOVL = AR.Overlay({
@@ -24,7 +24,8 @@ function TitleMenu_SC() {
     let mainMenuOVL = AR.Overlay({
         ovl: "UI_MainMenu_OVL",
         source: [0, 0, 1024, 94],
-        onScreen: [0, 674, 1024, 768]
+        onScreen: [0, 674, 1024, 768],
+        z: 3
     })
     let newGameButton = AR.Button({
         hs: AR.Hotspot({
@@ -37,12 +38,9 @@ function TitleMenu_SC() {
             onScreen: [43, 730, 169, 760]
         }),
         OnDown: function() {
-            document.querySelector("#scene").innerHTML = "";
             UI_Frame_SC();
             UI_NotesTasklist_SC();
-            s2600().forEach(element => {
-                document.querySelector("#scene").append(element);
-            });
+            Scene.LetsGo("s2600");
             //Scene.Change(Scene.streamName, "Badges_SC")
         }
     })

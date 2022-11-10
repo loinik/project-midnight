@@ -5,7 +5,10 @@ function s0() {
         channel: "Theme",
         volume: 0.6,
         loop: false,
-        active: true
+        active: true,
+        OnEnd: function() {
+            Scene.LetsGo("TitleMenu_SC");
+        }
         //active: function(this)
         //  return partner2LogoANIM.done
         //end
@@ -15,75 +18,79 @@ function s0() {
         z: 5,
         active: true,
         id: "HER_Logo_ANIM",
+        onScreen: Viewport.uiSize,
         OnEnd: function() {
-        oneSecond.start();
+            oneSecond.start();
         }
     });
     var oneSecond = AR.Timer({
         duration: 1,
         OnEnd: function() {
-        document.querySelector("#nancyANIM").play();
+            document.querySelector("#nancyANIM").play();
         }
     });
     var nancyANIM = AR.Movie({
         movie: "ND_LOGO_ANIM",
-        z: 5,
+        z: 4,
         active: false,
         id: "nancyANIM",
+        onScreen: Viewport.uiSize,
         OnEnd: function() {
-        document.querySelector("#game").append(nancyDrewOVL);
+            document.querySelector("#scene").append(nancyDrewOVL);
         }
     });
     var nancyDrewOVL = AR.Overlay({
         ovl: "UI_MainMenuTitleND_OVL",
+        id: "nancyDrewOVL",
         source: [0, 0, 808, 366],
         onScreen: [108, 83, 916, 449],
         z: 4,
     })
-    var Initialize = AR.Override({
-        RunOnce: function() {
-        Brain.Bonus_BR = true;
-        PhoneManager.SetAntenna(2);
-        Flags.Cellphone_Enable_Wallpaper_FL = true;
-        Flags.Cellphone_Enable_Menu_FL = true;
-        Flags.Cellphone_Enable_Camera_FL = true;
-        Flags.Cellphone_Enable_Gallery_FL = true;
-        Flags.Cellphone_Enable_Games_FL = true;
-        Flags.Cellphone_Enable_Messages_FL = true;
-        Flags.Cellphone_Enable_Options_FL = true;
-        Flags.Cellphone_Enable_Talk_FL = false;
-        Flags.Cellphone_Enable_Hints_FL = false;
-        Flags.Cellphone_Enable_Games_FL = Brain.Bonus_BR;
-        if (Load.Attic("TutorialReplay") == true) {
-            Save.Attic("TutorialReplay", false);
-            Scene.Change("TUT_Start_SC");
-        }
-        else if (Load.Attic("SkipToBadges") == true) {
-            Save.Attic("SkipToBadges", false);
-            Scene.Change("Badges_SC");
-        }
-        else {
-            Scene.Change(Scene.streamName, "TitleMenu_SC");
-        }
-        },
-        active: false
-    })
-    var defaultOptions = AR.Override({
-        RunOnce: function() {
-        if (Load.Attic("fastConvo") == undefined) {
-            Save.Attic("fastConvo", true)
-        }
-        }
-    })
-    var skip_HS = AR.Hotspot({
-        onScreen: Viewport.uiSize,
-        cursor: "None",
-        OnDone: function() {
-        Sound.Stop("FX4")
-        Sound.Stop("FX5")
-        Sound.Stop("FX6")
-        }
-    })
+    //var Initialize = AR.Override({
+    //    RunOnce: function() {
+    //    Brain.Bonus_BR = true;
+    //    //PhoneManager.SetAntenna(2);
+    //    Flags.Cellphone_Enable_Wallpaper_FL = true;
+    //    Flags.Cellphone_Enable_Menu_FL = true;
+    //    Flags.Cellphone_Enable_Camera_FL = true;
+    //    Flags.Cellphone_Enable_Gallery_FL = true;
+    //    Flags.Cellphone_Enable_Games_FL = true;
+    //    Flags.Cellphone_Enable_Messages_FL = true;
+    //    Flags.Cellphone_Enable_Options_FL = true;
+    //    Flags.Cellphone_Enable_Talk_FL = false;
+    //    Flags.Cellphone_Enable_Hints_FL = false;
+    //    Flags.Cellphone_Enable_Games_FL = Brain.Bonus_BR;
+    //    if (Load.Attic("TutorialReplay") == true) {
+    //        Save.Attic("TutorialReplay", false);
+    //        Scene.Change("TUT_Start_SC");
+    //    }
+    //    else if (Load.Attic("SkipToBadges") == true) {
+    //        Save.Attic("SkipToBadges", false);
+    //        Scene.Change("Badges_SC");
+    //    }
+    //    else {
+    //        Scene.Change(Scene.streamName, "TitleMenu_SC");
+    //    }
+    //    },
+    //    active: false
+    //})
+    //var defaultOptions = AR.Override({
+    //    RunOnce: function() {
+    //    if (Load.Attic("fastConvo") == undefined) {
+    //        Save.Attic("fastConvo", true)
+    //    }
+    //    }
+    //})
+    //var skip_HS = AR.Hotspot({
+    //    onScreen: Viewport.uiSize,
+    //    cursor: "None",
+    //    OnDone: function() {
+    //    Sound.Stop("FX4")
+    //    Sound.Stop("FX5")
+    //    Sound.Stop("FX6")
+    //    }
+    //})
+    return [splashSFX, HER_Logo_ANIM, oneSecond, nancyANIM, nancyDrewOVL];
 }
 //var themeSound = AR.Sound({
 //    sounds: "MainTheme_SFX",

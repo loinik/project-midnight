@@ -10,6 +10,7 @@ const AutotextInit = new autotextInit();
 const AutotextBoot = new autotextBoot();
 const Color = new color();
 const Font = new font();
+const Scene = new scene();
 const FontsBoot = new fontsBoot();
 const FontColorsInit = new fontColorsInit();
 const touch = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0) || (navigator.msMaxTouchPoints > 0);
@@ -20,6 +21,9 @@ var autotext_Temp = {};
 var autotext = {};
 var fonts = {};
 var colors = {};
+var Viewport = {
+    uiSize: [0, 1024, 0, 768]
+}
 
 Flags.Night_FL = false;
 Flags.Touch = touch;

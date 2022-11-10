@@ -23,7 +23,7 @@ function UI_Frame_SC() {
             z: 1
         }),
         OnUp: function() {
-            alert("Not Available Yet");
+            alert(autotext.SequenceJR_01);
         }
     });
     let menuFlashOVL = AR.Overlay({

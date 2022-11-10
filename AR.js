@@ -108,11 +108,7 @@ class ar {
 
         if(info["scene"]) {
             parent.addEventListener("click", function(event){
-                document.querySelector("#scene").innerHTML = "";
-                //import ("/mid/Ciftree/" + info["scene"] + ".js");
-                window[info["scene"]]().forEach(element => {
-                    document.querySelector("#scene").append(element);
-                });                 
+                Scene.LetsGo(info["scene"]);
             });
             if(Flags.Touch && info["hint"] != false) {
                 let navCursor = AR.Clone(info["cursor"]);
@@ -130,7 +126,13 @@ class ar {
         if(info["active"] == false) {
             o.style.visibility = "hidden";
         }
-        o.style.zIndex = info["z"];
+        if(info["z"]) {
+            o.style.zIndex = info["z"];
+        }
+        else {
+            o.style.zIndex = 1;
+        }
+        
 
         o.style.position = "relative";
         
@@ -140,7 +142,7 @@ class ar {
             info["overOvl"].style.opacity = 1;
         });
 
-        o.id = info["id"];
+        if(info["id"]) o.id = info["id"];
 
         info["hs"].addEventListener("mouseleave", function(event){
             info["overOvl"].style.opacity = 0;
@@ -212,15 +214,19 @@ class ar {
                 }
             }
         });
-        
-        if(info["channel"] != "Theme") {
-            snd.addEventListener("ended", function(event) {
+
+        snd.addEventListener("ended", function(event) {
+            document.querySelector("#" + info["id"]).remove();
+            if(info["channel"] != "Theme") {
                 document.querySelector("#textPane").remove();
                 document.querySelectorAll(".gameNAV, .touchNAV").forEach(allNAV => {
                     allNAV.style.setProperty("visibility", "visible", "important");
                 });
-            });
-        }
+            }
+            if(info["OnEnd"]) {
+                info["OnEnd"]();
+            }
+        });
         
 
         if(info["loop"] == true) {
@@ -236,8 +242,13 @@ class ar {
             source.type = "audio/wav";
 
             sound.append(source);
-            document.querySelector("#game").append(sound);
+            document.querySelector("#scene").append(sound);
             document.querySelector("#" + info["sounds"]).play();
+            if(info["OnEnd"]) {
+                sound.addEventListener("ended", function(event) {
+                    info["OnEnd"]();
+                });
+            }
         }
         else {
             return snd;
@@ -286,13 +297,14 @@ class ar {
                 video.id = info["id"];
             }
 
-            video.width = "1024";
-            video.height = "690";
+            video.width = info["onScreen"][1];
+            video.height = info["onScreen"][3];
             video.style.zIndex = z;
             video.style.position = "absolute";
             video.style.top = "0px";
             video.style.left = "0px";
             video.controls = false;
+            video.setAttribute('webkit-playsinline', 'webkit-playsinline');
 
             var source = document.createElement("source");
             source.src = "Video/" + info["movie"] + ".mp4";
@@ -313,7 +325,7 @@ class ar {
                 });
             }
 
-            document.querySelector("#game").append(video);
+            document.querySelector("#scene").append(video);
 
             if (info["active"] == true) {
                 document.querySelector("#" + info["id"]).play();
@@ -323,8 +335,8 @@ class ar {
             let Rectangle = document.createElement("canvas");
 
             Rectangle.style.position = "absolute";
-            Rectangle.width = 1024;
-            Rectangle.height = 768;
+            Rectangle.width = info["onScreen"][1];
+            Rectangle.height = info["onScreen"][3];
             Rectangle.style.zIndex = z;
 
             let image = new Image();
@@ -333,7 +345,7 @@ class ar {
                 let frameCanvas = Rectangle;
                 let ctx = frameCanvas.getContext("2d");
                 ctx.beginPath();
-                ctx.rect(0, 0, 1024, 768);
+                ctx.rect(0, 0, info["onScreen"][1], info["onScreen"][3]);
                 var pattern = ctx.createPattern(this, "no-repeat");
                 ctx.fillStyle = pattern;
                 ctx.fill();

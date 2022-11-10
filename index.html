@@ -29,9 +29,11 @@
     <script src="Fonts.js"></script>
     <script src="Color.js"></script>
     <script src="FlagsInit.js"></script>
+    <script src="Scene.js"></script>
 
     <script src="Boot.js"></script>
 
+    <script src="Ciftree/UI_Play_SC.js"></script>
     <script src="Ciftree/UI_Frame_SC.js"></script>
     <script src="Ciftree/UI_NotesTasklist_SC.js"></script>
     <script src="Ciftree/Cursors_SC.js"></script>
@@ -42,6 +44,7 @@
     <script src="Ciftree/Fonts_SC.js"></script>
     <script src="Ciftree/Notes_Text_SC.js"></script>
     <script src="Ciftree/Project_Text_SC.js"></script>
+    <script src="Ciftree/Credits_Text_SC.js"></script>
     <script src="Ciftree/TaskHint_Text_SC.js"></script>
     <script src="Ciftree/Texting_Text_SC.js"></script>
     <script src="Ciftree/Tutorial_Text_SC.js"></script>
@@ -82,12 +85,10 @@
     <script src="Ciftree/s2818.js"></script>
 
     <script>
-        UI_Frame_SC();
-        UI_NotesTasklist_SC();
-        document.querySelector("#scene").innerHTML = "";
-        s2600().forEach(element => {
-            document.querySelector("#scene").append(element);
-        });
+        //UI_Frame_SC();
+        //UI_NotesTasklist_SC();
+        AutotextBoot_SC();
+        Scene.LetsGo("UI_Play_SC");
     </script>
 </body>
 </html>
