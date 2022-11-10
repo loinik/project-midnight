@@ -305,6 +305,7 @@ class ar {
             video.style.left = "0px";
             video.controls = false;
             video.setAttribute('webkit-playsinline', 'webkit-playsinline');
+            video.setAttribute('playsinline', 'playsinline');
 
             var source = document.createElement("source");
             source.src = "Video/" + info["movie"] + ".mp4";
