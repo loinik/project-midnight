@@ -9,9 +9,6 @@ function s0() {
         OnEnd: function() {
             Scene.LetsGo("TitleMenu_SC");
         }
-        //active: function(this)
-        //  return partner2LogoANIM.done
-        //end
     });
     var HER_Logo_ANIM = AR.Movie({
         movie: "HER_Logo_ANIM",
@@ -36,8 +33,47 @@ function s0() {
         id: "nancyANIM",
         onScreen: Viewport.uiSize,
         OnEnd: function() {
-            document.querySelector("#scene").append(nancyDrewOVL);
+            fourSeconds.start();
+            document.querySelector("#nancyDrewOVL").style.visibility = "visible";
+            document.querySelector("#tileMenuBG").style.opacity = 1;
         }
+    });
+    var fourSeconds = AR.Timer({
+        duration: 4,
+        OnEnd: function() {
+            twoSeconds.start();
+            
+        }
+    });
+    var mainMenuOVL = AR.Overlay({
+        ovl: "UI_MainMenu_OVL",
+        id: "mainMenuOVL",
+        source: [0, 0, 1024, 94],
+        onScreen: [0, 674, 1024, 768],
+        z: 1,
+        transition: 1,
+        active: false
+    });
+    var twoSeconds = AR.Timer({
+        duration: 2,
+        OnEnd: function() {
+            fourSeconds2.start();
+            document.querySelector("#titleOVL").style.opacity = 1;
+        }
+    });
+    fourSeconds2 = AR.Timer({
+        duration: 6,
+        OnEnd: function() {
+            document.querySelector("#mainMenuOVL").style.opacity = 1;
+        }
+    })
+    var tileMenuBG = AR.Movie({
+        movie: "MID_MainMenu_BG",
+        id: "tileMenuBG",
+        transition: 4,
+        onScreen: Viewport.uiSize,
+        active: false,
+        z: 0
     });
     var nancyDrewOVL = AR.Overlay({
         ovl: "UI_MainMenuTitleND_OVL",
@@ -45,7 +81,18 @@ function s0() {
         source: [0, 0, 808, 366],
         onScreen: [108, 83, 916, 449],
         z: 4,
-    })
+        active: false
+    });
+    var titleOVL = AR.Overlay({
+        ovl: "MID_MainMenuTitle_OVL",
+        id: "titleOVL",
+        source: [0, 0, 808, 366],
+        onScreen: [108, 83, 916, 449],
+        z: 4,
+        transition: 2,
+        active: false
+    });
+    return [tileMenuBG, nancyDrewOVL, titleOVL, mainMenuOVL, fourSeconds, fourSeconds2, twoSeconds, oneSecond];
     //var Initialize = AR.Override({
     //    RunOnce: function() {
     //    Brain.Bonus_BR = true;
@@ -90,7 +137,7 @@ function s0() {
     //    Sound.Stop("FX6")
     //    }
     //})
-    return [splashSFX, HER_Logo_ANIM, oneSecond, nancyANIM, nancyDrewOVL];
+    
 }
 //var themeSound = AR.Sound({
 //    sounds: "MainTheme_SFX",

@@ -25,7 +25,7 @@ function TitleMenu_SC() {
         ovl: "UI_MainMenu_OVL",
         source: [0, 0, 1024, 94],
         onScreen: [0, 674, 1024, 768],
-        z: 3
+        z: 1
     })
     let newGameButton = AR.Button({
         hs: AR.Hotspot({
@@ -143,6 +143,13 @@ function TitleMenu_SC() {
         OnDown: function() {
             //Game.Exit()
         }
-    })
+    });
+    var themeSound = AR.Sound({
+        sounds: "MainTheme_SFX",
+        channel: "Theme",
+        volume: 0.75,
+        loop: true,
+        active: true
+    });
     return [sum, tileMenuBG, titleOVL, nancyDrewOVL, mainMenuOVL, newGameButton, loadGameButton, helpButton, optionsButton, extrasButton, moreNDButton, quitButton];
 }

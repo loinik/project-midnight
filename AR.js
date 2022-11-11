@@ -20,9 +20,7 @@ class ar {
         Rectangle.width = onScreen.width;
         Rectangle.height = onScreen.height;
 
-        if(info["active"] == false) {
-            Rectangle.style.visibility = "hidden";
-        }
+        
 
         if(info["id"]) {
             Rectangle.id = info["id"];
@@ -30,6 +28,14 @@ class ar {
 
         if(info["opacity"]) {
             Rectangle.style.opacity = info["opacity"];
+        }
+
+        if(info["active"] == false && !info["opacity"] && info["transition"]) {
+            Rectangle.style.opacity = 0;
+            Rectangle.style.transition = "all " + info["transition"] + "s";
+        }
+        else if(info["active"] == false) {
+            Rectangle.style.visibility = "hidden";
         }
         
         Rectangle.style.zIndex = (info["z"] != null) ? info["z"] : 0;
@@ -130,7 +136,7 @@ class ar {
             o.style.zIndex = info["z"];
         }
         else {
-            o.style.zIndex = 1;
+            o.style.zIndex = 2;
         }
         
 
@@ -335,10 +341,19 @@ class ar {
         if(jpg) {
             let Rectangle = document.createElement("canvas");
 
+            if (info["id"]) {
+                Rectangle.id = info["id"];
+            }
+
             Rectangle.style.position = "absolute";
             Rectangle.width = info["onScreen"][1];
             Rectangle.height = info["onScreen"][3];
             Rectangle.style.zIndex = z;
+
+            if(info["active"] == false && !info["opacity"] && info["transition"]) {
+                Rectangle.style.opacity = 0;
+                Rectangle.style.transition = "all " + info["transition"] + "s";
+            }
 
             let image = new Image();
             image.src = "Video/" + info["movie"] + ".jpg"; 
