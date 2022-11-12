@@ -2,6 +2,7 @@ const game = document.querySelector("#game");
 const body = document.querySelector("body");
 const gameFrame = document.querySelector("#game");
 const cursor = document.querySelector("#cursor");
+const uiFrame = document.querySelector("#uiFrame");
 
 const Rect = new rect();
 const AR = new ar();
@@ -22,7 +23,7 @@ var autotext = {};
 var fonts = {};
 var colors = {};
 var Viewport = {
-    uiSize: [0, 1024, 0, 768]
+    uiSize: [0, 0, 1024, 768]
 }
 
 Flags.Night_FL = false;

@@ -7,7 +7,7 @@ function s0() {
         loop: false,
         active: true,
         OnEnd: function() {
-            Scene.LetsGo("TitleMenu_SC");
+            Scene.LetsGo("TitleMenu_SC", false);
         }
     });
     var HER_Logo_ANIM = AR.Movie({
@@ -92,7 +92,21 @@ function s0() {
         transition: 2,
         active: false
     });
-    return [tileMenuBG, nancyDrewOVL, titleOVL, mainMenuOVL, fourSeconds, fourSeconds2, twoSeconds, oneSecond];
+    var skip_HS = AR.Hotspot({
+        onScreen: Viewport.uiSize,
+        cursor: "None",
+        z: 5,
+        OnUp: function() {
+            let s = document.querySelector("#VEN_Splash_SFX");
+            if (s) s.pause();
+            let h = document.querySelector("#HER_Logo_ANIM");
+            if (h) h.pause();
+            let n = document.querySelector("#nancyANIM");
+            if (n) n.pause();
+            Scene.LetsGo("TitleMenu_SC");
+        }
+    })
+    return [tileMenuBG, nancyDrewOVL, titleOVL, mainMenuOVL, skip_HS];
     //var Initialize = AR.Override({
     //    RunOnce: function() {
     //    Brain.Bonus_BR = true;

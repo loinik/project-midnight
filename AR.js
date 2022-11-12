@@ -1,4 +1,8 @@
 class ar {
+    Override(info) {
+        if(info["Run"]) info["Run"]();
+    }
+
     Overlay(info) {
         let Rectangle = document.createElement("canvas");
         
@@ -232,11 +236,19 @@ class ar {
             if(info["OnEnd"]) {
                 info["OnEnd"]();
             }
+            if(info["loop"] == true) {
+                this.currentTime = 0;
+                this.play();
+            }
         });
         
 
         if(info["loop"] == true) {
             snd.loop = true;
+        }
+
+        if(info["id"] == true) {
+            snd.id = info["id"];
         }
 
         if(info["active"] == true) {
@@ -303,7 +315,7 @@ class ar {
                 video.id = info["id"];
             }
 
-            video.width = info["onScreen"][1];
+            video.width = info["onScreen"][2];
             video.height = info["onScreen"][3];
             video.style.zIndex = z;
             video.style.position = "absolute";
@@ -312,6 +324,7 @@ class ar {
             video.controls = false;
             video.setAttribute('webkit-playsinline', 'webkit-playsinline');
             video.setAttribute('playsinline', 'playsinline');
+            video.style.pointerEvents = "none";
 
             var source = document.createElement("source");
             source.src = "Video/" + info["movie"] + ".mp4";
@@ -346,7 +359,7 @@ class ar {
             }
 
             Rectangle.style.position = "absolute";
-            Rectangle.width = info["onScreen"][1];
+            Rectangle.width = info["onScreen"][2];
             Rectangle.height = info["onScreen"][3];
             Rectangle.style.zIndex = z;
 
@@ -355,13 +368,20 @@ class ar {
                 Rectangle.style.transition = "all " + info["transition"] + "s";
             }
 
+            if(info["animationName"] && info["duration"]) {
+                Rectangle.style.animationName = info["animationName"];
+                Rectangle.style.animationDuration = info["duration"] + "s";
+                Rectangle.style.animationFillMode = "forwards";
+                Rectangle.style.pointerEvents = "none";
+            }
+
             let image = new Image();
             image.src = "Video/" + info["movie"] + ".jpg"; 
             image.onload = function(){
                 let frameCanvas = Rectangle;
                 let ctx = frameCanvas.getContext("2d");
                 ctx.beginPath();
-                ctx.rect(0, 0, info["onScreen"][1], info["onScreen"][3]);
+                ctx.rect(0, 0, info["onScreen"][2], info["onScreen"][3]);
                 var pattern = ctx.createPattern(this, "no-repeat");
                 ctx.fillStyle = pattern;
                 ctx.fill();
@@ -369,8 +389,6 @@ class ar {
             };
             return Rectangle;
         }
-
-        
     }
 
     Timer(info) {
@@ -387,7 +405,7 @@ class ar {
 
         Rectangle.style.position = "absolute";
         Rectangle.width = 1024;
-        Rectangle.height = 690;
+        Rectangle.height = 768;
         Rectangle.style.zIndex = 0;
 
         var image = new Image();
@@ -396,7 +414,7 @@ class ar {
             let frameCanvas = Rectangle;
             let ctx = frameCanvas.getContext("2d");
             ctx.beginPath();
-            ctx.rect(0, 0, 1024, 690);
+            ctx.rect(0, 0, 1024, 768);
             var pattern = ctx.createPattern(this, "no-repeat");
             ctx.fillStyle = pattern;
             ctx.fill();

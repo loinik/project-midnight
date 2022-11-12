@@ -23,7 +23,9 @@ function UI_Frame_SC() {
             z: 1
         }),
         OnUp: function() {
-            alert(autotext.SequenceJR_01);
+            //alert(autotext.SequenceJR_01);
+            uiFrame.classList.add("disabled");
+            Scene.LetsGo("TitleMenu_SC");
         }
     });
     let menuFlashOVL = AR.Overlay({
