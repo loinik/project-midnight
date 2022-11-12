@@ -14,7 +14,7 @@ function UI_Play_SC() {
     let locked = false;
     let startNAV = AR.Hotspot({
         scene: "s0",
-        cursor: "MagGlassHot",
+        cursor: "MenuHot",
         onScreen: [0, 0, 1024, 768],
         active: function() {
             //

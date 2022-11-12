@@ -164,8 +164,8 @@ function TitleMenu_SC(anim = true) {
         opacity: 0,
         animationName: "fadeOut"
     });
-    var twoSeconds = AR.Timer({
-        duration: 2,
+    var oneSecond = AR.Timer({
+        duration: 1,
         OnEnd: function() {
             themeSound.play();
         }
@@ -173,8 +173,7 @@ function TitleMenu_SC(anim = true) {
     let returnArray = [sum, tileMenuBG, titleOVL, nancyDrewOVL, mainMenuOVL, newGameButton, loadGameButton, helpButton, optionsButton, extrasButton, moreNDButton, quitButton];
     if(anim == true) {
         returnArray.push(coverBG);
-        twoSeconds.start();
-        
+        oneSecond.start();
     }
     return returnArray;
 }
