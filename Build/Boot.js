@@ -26,6 +26,10 @@ var Viewport = {
     uiSize: [0, 0, 1024, 768]
 }
 
+var env;
+var bg;
+var sc;
+
 Flags.Night_FL = false;
 Flags.Touch = touch;
 

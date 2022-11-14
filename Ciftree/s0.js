@@ -12,6 +12,7 @@ function s0() {
     });
     var HER_Logo_ANIM = AR.Movie({
         movie: "HER_Logo_ANIM",
+        type: "anim",
         z: 5,
         active: true,
         id: "HER_Logo_ANIM",
@@ -28,6 +29,7 @@ function s0() {
     });
     var nancyANIM = AR.Movie({
         movie: "ND_LOGO_ANIM",
+        type: "anim",
         z: 4,
         active: false,
         id: "nancyANIM",

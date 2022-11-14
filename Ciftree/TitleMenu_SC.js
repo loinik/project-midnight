@@ -1,8 +1,8 @@
 function TitleMenu_SC(anim = true) {
     let sum = AR.Summary({
         env: "OPN",
-        bg: "toast_BG",
-        z: 10
+        bg: "MID_MainMenu_BG",
+        z: 1
     });
     let tileMenuBG = AR.Movie({
         movie: "MID_MainMenu_BG",
@@ -170,7 +170,7 @@ function TitleMenu_SC(anim = true) {
             themeSound.play();
         }
     });
-    let returnArray = [sum, tileMenuBG, titleOVL, nancyDrewOVL, mainMenuOVL, newGameButton, loadGameButton, helpButton, optionsButton, extrasButton, moreNDButton, quitButton];
+    let returnArray = [sum, titleOVL, nancyDrewOVL, mainMenuOVL, newGameButton, loadGameButton, helpButton, optionsButton, extrasButton, moreNDButton, quitButton];
     if(anim == true) {
         returnArray.push(coverBG);
         oneSecond.start();
