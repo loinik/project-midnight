@@ -1,0 +1,30 @@
+# Blender MTL File: 'Parry House 7.blend'
+# Material Count: 2
+
+newmtl spraycan01.001
+Ns 250.000000
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 1.000000 1.000000 1.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Bump -bm 0.250000 /Users/michelloinik/PHL/Textures/Living Room/spraycan_01_normal.png
+map_Kd /Users/michelloinik/PHL/Textures/Living Room/spraycan_01_albedo.png
+map_Ns /Users/michelloinik/PHL/Textures/Living Room/spraycan_01_metalroughness.png
+refl /Users/michelloinik/PHL/Textures/Living Room/spraycan_01_metalroughness.png
+
+newmtl spraycan02.001
+Ns 250.000000
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 1.000000 1.000000 1.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Bump -bm 0.250000 /Users/michelloinik/PHL/Textures/Living Room/spraycan_02_normal.png
+map_Kd /Users/michelloinik/PHL/Textures/Living Room/spraycan_02_albedo.png
+map_Ns /Users/michelloinik/PHL/Textures/Living Room/spraycan_02_metalroughness.png
+refl /Users/michelloinik/PHL/Textures/Living Room/spraycan_02_metalroughness.png

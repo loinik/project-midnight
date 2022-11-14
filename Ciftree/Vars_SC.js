@@ -31,7 +31,7 @@ VarTableInit.Create([
     "Stock_Stuffed_Bear_VT",
     "Stock_UdderPops_VT",
     "Stock_Viking_VT",
-    "UI_CellphoneGamesPlayed_VT",
+    "UI_Cellphone_Games_Played_VT",
     "UI_Cellphone_CallRingMin_VT",
     "UI_Cellphone_CallRingMax_VT",
     "UI_Cellphone_Games_AggregationLevel_VT",

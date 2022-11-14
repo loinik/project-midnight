@@ -13,6 +13,15 @@ function s2623() {
             //return not locked
         }
     });
+    var bookshelfNAV = AR.Hotspot({
+        onScreen: [200, 0, 400, 690],
+        scene: "s2626",
+        cursor: "MagGlassHot",
+        hint: false,
+        active: function() {
+            //return not locked
+        }
+    });
     var rightNAV = AR.Hotspot({
         scene: "s2620",
         onScreen: [824, 0, 1024, 690],
@@ -37,5 +46,5 @@ function s2623() {
             //return not locked
         }
     });
-    return [sum, fansNAV, rightNAV, leftNAV, backNAV];
+    return [sum, fansNAV, bookshelfNAV, rightNAV, leftNAV, backNAV];
 }
