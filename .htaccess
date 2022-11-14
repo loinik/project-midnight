@@ -27,4 +27,5 @@
     # Others
     ExpiresByType application/pdf "access plus 1 month"
     ExpiresByType application/x-shockwave-flash "access plus 1 month"
+    ExpiresByType text/plain "access plus 1 month"
 </IfModule>

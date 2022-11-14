@@ -8,7 +8,7 @@ function s2627() {
         scene: "s2626",
         cursor: "Back",
         active: function() {
-            //return not locked
+    //return not locked
         }
     });
     
@@ -51,122 +51,103 @@ function s2627() {
 
 
 
-    let obj_cont;
-
     let camera, scene, renderer;
 
     let mouseX = 0, mouseY = 0;
-            
+
     let windowHalfX = 1024 / 2;
     let windowHalfY = 690 / 2;
 
-    let object;
-    let controls;
+    let obj_cont;
+
 
     init();
     animate();
 
     function init() {
 
-    	obj_cont = document.createElement( 'div' );
+        obj_cont = document.createElement('div');
         obj_cont.id = "threejsscene";
-    	document.querySelector("#scene").appendChild( obj_cont );
+        document.querySelector("#scene").appendChild(obj_cont);
 
-    	camera = new THREE.PerspectiveCamera( 45, 1024 / 690, 1, 2000 );
-    	camera.position.z = 250;
+        camera = new THREE.PerspectiveCamera(45, 1024 / 690, 1, 2000);
+        camera.position.z = 250;
 
-    	// scene
+        // scene
 
-    	scene = new THREE.Scene();
+        scene = new THREE.Scene();
 
-    	const ambientLight = new THREE.AmbientLight( 0xcccccc, 0.4 );
-    	scene.add( ambientLight );
+        const ambientLight = new THREE.AmbientLight(0xcccccc, 0.4);
+        scene.add(ambientLight);
 
-    	const pointLight = new THREE.PointLight( 0xffffff, 0.8 );
-    	camera.add( pointLight );
-    	scene.add( camera );
+        const pointLight = new THREE.PointLight(0xffffff, 0.8);
+        camera.add(pointLight);
+        scene.add(camera);
 
-    	// manager
+        // model
 
-    	function loadModel() {
+        const onProgress = function (xhr) {
+            if (xhr.lengthComputable) {
+                const percentComplete = xhr.loaded / xhr.total * 100;
+                console.log(Math.round(percentComplete, 2) + '% downloaded');
+            }
+        };
 
-    		object.traverse( function ( child ) {
+        new THREE.MTLLoader()
+            .setPath('Ciftree/')
+            .load('PHL_Spraycan_TEX.mtl', function (materials) {
 
-        if ( child.isMesh ) child.material.map = texture;
+        materials.preload();
 
-    		} );
+        new THREE.OBJLoader()
+            .setMaterials(materials)
+            .setPath('Ciftree/')
+            .load('PHL_Spraycan_MDL.obj', function (object) {
+                object.position.y = - 95;
+                scene.add(object);
+            }, onProgress);
+        });
 
-    		object.position.y = - 95;
-    		scene.add( object );
-
-    	}
-
-    	const manager = new THREE.LoadingManager( loadModel );
-
-    	// texture
-
-    	const textureLoader = new THREE.TextureLoader( manager );
-    	const texture = textureLoader.load( 'Ciftree/male-02-1noCulling.JPG' );
-
-    	// model
-
-    	function onProgress( xhr ) {
-
-    		if ( xhr.lengthComputable ) {
-
-        const percentComplete = xhr.loaded / xhr.total * 100;
-        console.log( 'model ' + Math.round( percentComplete, 2 ) + '% downloaded' );
-
-    		}
-
-    	}
-
-    	function onError() {}
-
-    	const loader = new THREE.OBJLoader( manager );
-    	loader.load( 'Ciftree/male02.obj', function ( obj ) {
-
-    		object = obj;
-
-    	}, onProgress, onError );
-
-    	//
-
-    	renderer = new THREE.WebGLRenderer({
+        renderer = new THREE.WebGLRenderer({
             alpha: true,
             antialias: true
         });
-    	//renderer.setPixelRatio( window.devicePixelRatio );
-    	renderer.setSize(1024, 690);
+        renderer.outputEncoding = THREE.sRGBEncoding;
+        renderer.setPixelRatio(window.devicePixelRatio);
+        renderer.setSize(1024, 690);
         renderer.domElement.style.backgroundImage = `url(Video/${bg}.jpg)`;
-    	document.querySelector("#threejsscene").appendChild( renderer.domElement );
+        document.querySelector("#threejsscene").appendChild( renderer.domElement );
         controls = new THREE.OrbitControls(camera, renderer.domElement);
         controls.enableZoom = false;
+        //controls.enablePan = false;
+        //controls.enableDamping = false;
+        camera.position.x = -1;
+        camera.position.y = -1;
 
-    	//document.addEventListener( 'mousemove', onDocumentMouseMove );
+        //document.addEventListener('mousemove', onDocumentMouseMove);
 
-    	//
+        //
 
-    	//window.addEventListener( 'resize', onWindowResize );
+        //window.addEventListener('resize', onWindowResize);
 
     }
 
     function onWindowResize() {
 
-    	windowHalfX = 1024 / 2;
-    	windowHalfY = 690 / 2;
+        windowHalfX = 1024 / 2;
+        windowHalfY = 690 / 2;
 
-    	camera.aspect = 1024 / 690;
-    	camera.updateProjectionMatrix();
+        camera.aspect = 1024 / 690;
+        camera.updateProjectionMatrix();
 
-    	renderer.setSize( 1024, 690 );
+        renderer.setSize(1024, 690);
 
     }
 
-    function onDocumentMouseMove( event ) {
+    function onDocumentMouseMove(event) {
 
-    	mouseX = ( event.clientX - windowHalfX ) / 2;
-    	mouseY = ( event.clientY - windowHalfY ) / 2;
+        mouseX = (event.clientX - windowHalfX) / 2;
+        mouseY = (event.clientY - windowHalfY) / 2;
 
     }
 
@@ -174,21 +155,18 @@ function s2627() {
 
     function animate() {
 
-    	requestAnimationFrame( animate );
-    	render();
+        requestAnimationFrame(animate);
+        render();
 
     }
 
     function render() {
+        camera.lookAt(scene.position);
 
-    	camera.position.x += 0.005;
-    	camera.position.y += 0.005;
-
-    	camera.lookAt( scene.position );
-
-    	renderer.render( scene, camera );
+        renderer.render(scene, camera);
 
     }
+
 
     return [sum, backNAV];
 }
