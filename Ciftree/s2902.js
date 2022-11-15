@@ -8,7 +8,6 @@ function s2902() {
         scene: "s2651",
         onScreen: [239, 18, 790, 640],
         cursor: "Forward",
-        hint: false,
         active: function() {
             //return not locked
         }
