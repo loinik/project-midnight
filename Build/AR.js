@@ -3,6 +3,87 @@ class ar {
         if(info["Run"]) info["Run"]();
     }
 
+    Inspection(info) {
+        let camera, scene, renderer;
+        let obj_cont;
+
+        init();
+        animate();
+
+        function init() {
+
+            obj_cont = document.createElement('div');
+            obj_cont.id = "threejsscene";
+            document.querySelector("#scene").appendChild(obj_cont);
+
+            camera = new THREE.PerspectiveCamera(45, 1024 / 690, 1, 2000);
+            camera.position.z = 250;
+
+            scene = new THREE.Scene();
+
+
+            scene.add(camera);
+
+            //const onProgress = function (xhr) {
+            //    if (xhr.lengthComputable) {
+            //        const percentComplete = xhr.loaded / xhr.total * 100;
+            //        console.log(Math.round(percentComplete, 2) + '% downloaded');
+            //    }
+            //};
+
+            let loader = new THREE.GLTFLoader();
+
+            loader.load('Ciftree/' + info["model"] + '.gltf', function (gltf) {
+                let object = gltf.scene;
+                object.scale.set(1, 1, 1);
+                object.position.y = 5;
+                scene.add(object);
+            });
+
+            const directionalLight = new THREE.DirectionalLight(0xcccccc, 1);
+            directionalLight.castShadow = true;
+            directionalLight.position.set(10, 10, 10);
+            camera.add(directionalLight);
+
+            const helper = new THREE.DirectionalLightHelper(directionalLight);
+            scene.add(helper);
+
+            renderer = new THREE.WebGLRenderer({
+                alpha: true,
+                antialias: true
+            });
+
+            renderer.outputEncoding = THREE.sRGBEncoding;
+            renderer.setPixelRatio(window.devicePixelRatio);
+            renderer.setSize(1024, 690);
+            renderer.domElement.style.backgroundImage = 'url(Video/' + info["bg"] + '.jpg)';
+            document.querySelector("#threejsscene").appendChild(renderer.domElement);
+
+            let controls = new THREE.OrbitControls(camera, renderer.domElement);
+            controls.enableZoom = false;
+            controls.enablePan = false;
+            controls.enableRotate = true;
+            controls.enableDamping = false;
+            controls.mouseButtons = {
+                LEFT: THREE.MOUSE.PAN,
+                MIDDLE: THREE.MOUSE.DOLLY,
+                RIGHT: THREE.MOUSE.ROTATE
+            }
+            camera.position.x = -1;
+            camera.position.y = -1;
+        }
+
+        function animate() {
+            requestAnimationFrame(animate);
+            render();
+        }
+
+        function render() {
+            camera.lookAt(scene.position);
+            renderer.render(scene, camera);
+        }
+    }
+
     Overlay(info) {
         let Rectangle = document.createElement("canvas");
         
