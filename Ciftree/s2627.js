@@ -93,20 +93,28 @@ function s2627() {
             }
         };
 
+        //let loader = new THREE.GLTFLoader();
+        //
+        //loader.load('Ciftree/PHL_Spraycan_MDL.glb', function (gltf) {
+        //    object = gltf.scene;  // sword 3D object is loaded
+        //    object.scale.set(1, 1, 1);
+        //    object.position.y = 5;
+        //    scene.add(object);
+        //});
+
         new THREE.MTLLoader()
             .setPath('Ciftree/')
             .load('PHL_Spraycan_TEX.mtl', function (materials) {
-
-        materials.preload();
-
-        new THREE.OBJLoader()
-            .setMaterials(materials)
-            .setPath('Ciftree/')
-            .load('PHL_Spraycan_MDL.obj', function (object) {
-                object.position.y = - 95;
-                scene.add(object);
-            }, onProgress);
-        });
+                materials.preload();
+        
+                new THREE.OBJLoader()
+                    .setMaterials(materials)
+                    .setPath('Ciftree/')
+                    .load('PHL_Spraycan_MDL.obj', function (object) {
+                        object.position.y = - 95;
+                        scene.add(object);
+                    }, onProgress);
+            });
 
         renderer = new THREE.WebGLRenderer({
             alpha: true,
@@ -119,8 +127,8 @@ function s2627() {
         document.querySelector("#threejsscene").appendChild( renderer.domElement );
         controls = new THREE.OrbitControls(camera, renderer.domElement);
         controls.enableZoom = false;
-        //controls.enablePan = false;
-        //controls.enableDamping = false;
+        controls.enablePan = false;
+        controls.enableDamping = false;
         camera.position.x = -1;
         camera.position.y = -1;
 
