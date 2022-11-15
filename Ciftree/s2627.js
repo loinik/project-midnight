@@ -77,11 +77,11 @@ function s2627() {
 
         scene = new THREE.Scene();
 
-        const ambientLight = new THREE.AmbientLight(0xcccccc, 0.4);
-        scene.add(ambientLight);
+        //const ambientLight = new THREE.AmbientLight(0xcccccc, 1);
+        //scene.add(ambientLight);
 
-        const pointLight = new THREE.PointLight(0xffffff, 0.8);
-        camera.add(pointLight);
+        const pointLight = new THREE.PointLight(0xffffff, 1);
+        //camera.add(pointLight);
         scene.add(camera);
 
         // model
@@ -93,33 +93,43 @@ function s2627() {
             }
         };
 
-        //let loader = new THREE.GLTFLoader();
-        //
-        //loader.load('Ciftree/PHL_Spraycan_MDL.glb', function (gltf) {
-        //    object = gltf.scene;  // sword 3D object is loaded
-        //    object.scale.set(1, 1, 1);
-        //    object.position.y = 5;
-        //    scene.add(object);
-        //});
-
-        new THREE.MTLLoader()
-            .setPath('Ciftree/')
-            .load('PHL_Spraycan_TEX.mtl', function (materials) {
-                materials.preload();
+        let loader = new THREE.GLTFLoader();
         
-                new THREE.OBJLoader()
-                    .setMaterials(materials)
-                    .setPath('Ciftree/')
-                    .load('PHL_Spraycan_MDL.obj', function (object) {
-                        object.position.y = - 95;
-                        scene.add(object);
-                    }, onProgress);
-            });
+        loader.load('Ciftree/PHL_SprayCan_MDL.gltf', function (gltf) {
+            object = gltf.scene;  // sword 3D object is loaded
+            object.scale.set(1, 1, 1);
+            object.position.y = 5;
+            scene.add(object);
+        });
+
+        const directionalLight = new THREE.DirectionalLight(0xcccccc, 1);
+        directionalLight.castShadow = true;
+        directionalLight.position.set(10, 10, 10);
+        camera.add(directionalLight);
+
+        const helper = new THREE.DirectionalLightHelper(directionalLight);
+        scene.add(helper);
+
+        //new THREE.MTLLoader()
+        //    .setPath('Ciftree/')
+        //    .load('PHL_Spraycan_TEX.mtl', function (materials) {
+        //        materials.preload();
+        //
+        //        new THREE.OBJLoader()
+        //            .setMaterials(materials)
+        //            .setPath('Ciftree/')
+        //            .load('PHL_Spraycan_MDL.obj', function (object) {
+        //                object.position.y = - 95;
+        //                scene.add(object);
+        //            }, onProgress);
+        //    });
 
         renderer = new THREE.WebGLRenderer({
             alpha: true,
             antialias: true
         });
+        //renderer.shadowMap.enabled = true;
+        //renderer.shadowMap.type = THREE.PCFSoftShadowMap;
         renderer.outputEncoding = THREE.sRGBEncoding;
         renderer.setPixelRatio(window.devicePixelRatio);
         renderer.setSize(1024, 690);
