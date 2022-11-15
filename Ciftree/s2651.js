@@ -19,5 +19,13 @@ function s2651() {
             //return not locked
         }
     });
-    return [sum, forwardNAV, rightNAV];
+    var backNAV = AR.Hotspot({
+        scene: "s2649",
+        onScreen: [0, 560, 1024, 690],
+        cursor: "UTurn",
+        active: function() {
+            //return not locked
+        }
+    });
+    return [sum, forwardNAV, rightNAV, backNAV];
 }

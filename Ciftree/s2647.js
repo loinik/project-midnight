@@ -11,6 +11,14 @@ function s2647() {
             //return not locked
         }
     });
+    var leftNAV = AR.Hotspot({
+        scene: "s2648",
+        onScreen: [0, 0, 200, 690],
+        cursor: "Left",
+        active: function() {
+            //return not locked
+        }
+    });
     var backNAV = AR.Hotspot({
         onScreen: [0, 560, 1024, 690],
         scene: "s2646",
@@ -19,5 +27,5 @@ function s2647() {
             //return not locked
         }
     });
-    return [sum, forwardNAV, backNAV];
+    return [sum, forwardNAV, leftNAV, backNAV];
 }
