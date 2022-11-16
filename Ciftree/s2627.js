@@ -11,11 +11,9 @@ function s2627() {
             //return not locked
         }
     });
-    
     var sprayCan = AR.Inspection({
         bg: "PHL_Bookshelf" + (Flags.Night_FL ? "Night" : "") + "_BG",
         model: "PHL_SprayCan_MDL"
-    })
-
+    });
     return [sum, backNAV];
 }

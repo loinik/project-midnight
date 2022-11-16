@@ -20,8 +20,6 @@ class ar {
             camera.position.z = 250;
 
             scene = new THREE.Scene();
-
-
             scene.add(camera);
 
             //const onProgress = function (xhr) {
@@ -40,6 +38,9 @@ class ar {
                 scene.add(object);
             });
 
+            const ambientLight = new THREE.AmbientLight(0xcccccc, 0.2);
+            camera.add(ambientLight);
+
             const directionalLight = new THREE.DirectionalLight(0xcccccc, 1);
             directionalLight.castShadow = true;
             directionalLight.position.set(10, 10, 10);
@@ -52,6 +53,7 @@ class ar {
                 alpha: true,
                 antialias: true
             });
+            
 
             renderer.outputEncoding = THREE.sRGBEncoding;
             renderer.setPixelRatio(window.devicePixelRatio);
@@ -65,10 +67,11 @@ class ar {
             controls.enableRotate = true;
             controls.enableDamping = false;
             controls.mouseButtons = {
-                LEFT: THREE.MOUSE.PAN,
-                MIDDLE: THREE.MOUSE.DOLLY,
+                //LEFT: THREE.MOUSE.PAN,
+                //MIDDLE: THREE.MOUSE.DOLLY,
                 RIGHT: THREE.MOUSE.ROTATE
             }
+            controls.rotateSpeed = 0.5;
             camera.position.x = -1;
             camera.position.y = -1;
         }
