@@ -1,7 +1,8 @@
 function s2629() {
     let sum = AR.Summary({
         env: "PHL",
-        bg: "PHL_EasterEgg" + (Flags.Night_FL ? "Night" : "") + "_BG"
+        bg: "PHL_EasterEgg" + (Flags.Night_FL ? "Night" : "") + "_BG",
+        ext: "webp"
     });
     var backNAV = AR.Hotspot({
         onScreen: [0, 560, 1024, 690],

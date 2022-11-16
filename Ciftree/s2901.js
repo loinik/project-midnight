@@ -1,7 +1,8 @@
 function s2901() {
     var sum = AR.Summary({
         env: "PHG",
-        bg: "PHG_Node" + (Flags.Night_FL ? "Night" : "") + "0001_BG"
+        bg: "PHG_Node" + (Flags.Night_FL ? "Night" : "") + "0001_BG",
+        ext: "webp"
     });
     var locked = false;
     var rightNAV = AR.Hotspot({

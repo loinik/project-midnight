@@ -1,7 +1,8 @@
 function s2626() {
     let sum = AR.Summary({
         env: "PHL",
-        bg: "PHL_Bookshelf" + (Flags.Night_FL ? "Night" : "") + "_BG"
+        bg: "PHL_Bookshelf" + (Flags.Night_FL ? "Night" : "") + "_BG",
+        ext: "webp"
     });
     var sprayNAV = AR.Hotspot({
         onScreen: [228, 289, 388, 449],

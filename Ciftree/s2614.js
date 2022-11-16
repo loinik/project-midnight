@@ -1,7 +1,8 @@
 function s2614() {
     let sum = AR.Summary({
         env: "PHK",
-        bg: "PHK_Node" + (Flags.Night_FL ? "Night" : "") + "0001_BG"
+        bg: "PHK_Node" + (Flags.Night_FL ? "Night" : "") + "0001_BG",
+        ext: "webp"
     });
     let locked = false;
     let kokoKringle = AR.Inspection({

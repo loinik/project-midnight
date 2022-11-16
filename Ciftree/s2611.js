@@ -1,7 +1,8 @@
 function s2611() {
     var sum = AR.Summary({
         env: "PHK",
-        bg: "PHK_Node" + (Flags.Night_FL ? "Night" : "") + "0001_BG"
+        bg: "PHK_Node" + (Flags.Night_FL ? "Night" : "") + "0001_BG",
+        ext: "webp"
     });
     var locked = false;
     let barOverlay = AR.Overlay({

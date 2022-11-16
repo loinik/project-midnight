@@ -1,7 +1,8 @@
 function s2625() {
     var sum = AR.Summary({
         env: "PHL",
-        bg: "PHL_Fans" + (Flags.Night_FL ? "Night" : "") + "_BG"
+        bg: "PHL_Fans" + (Flags.Night_FL ? "Night" : "") + "_BG",
+        ext: "webp"
     });
     var locked = false;
     let missing = AR.Sound({

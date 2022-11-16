@@ -486,15 +486,16 @@ class ar {
     }
 
     Summary(info) {
-        var Rectangle = document.createElement("canvas");
+        let ext = (info["ext"]) ? info["ext"] : "jpg";
+        let Rectangle = document.createElement("canvas");
 
         Rectangle.style.position = "absolute";
         Rectangle.width = 1024;
         Rectangle.height = 768;
         Rectangle.style.zIndex = 0;
 
-        var image = new Image();
-        image.src = "Video/" + info["bg"] + ".jpg"; 
+        let image = new Image();
+        image.src = "Video/" + info["bg"] + `.${ext}`; 
         bg = info["bg"];
         env = info["env"];
         image.onload = function(){

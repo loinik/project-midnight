@@ -1,7 +1,8 @@
 function s2651() {
     let sum = AR.Summary({
         env: "PHH",
-        bg: "PHH_NavBBack" + (Flags.Night_FL ? "Night" : "") + "_BG"
+        bg: "PHH_NavBBack" + (Flags.Night_FL ? "Night" : "") + "_BG",
+        ext: "webp"
     });
     var forwardNAV = AR.Hotspot({
         scene: "s2647",
