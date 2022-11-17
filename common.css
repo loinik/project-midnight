@@ -55,6 +55,8 @@ body.navHint .touchNAV {
     margin: auto;
     border: 0px solid white;
     overflow: hidden;
+    top: 0;
+    bottom: env(safe-area-inset-bottom);
 }
 img {
     object-fit: cover;
