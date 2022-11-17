@@ -1,0 +1,30 @@
+{
+    "Ciftree": [
+        "MID_MainMenuTitle_OVL.png",
+        "UI_Difficulty_OVL.png",
+        "UI_Frame_OVL.png",
+        "UI_MainMenu_OVL.png",
+        "UI_MainMenu_Rollover_OVL.png",
+        "UI_MainMenuTitleND_OVL.png",
+        "UI_Phone_OVL.png",
+        "UI_PhoneButtons_OVL.png",
+        "UI_PhoneCharm_OVL.png",
+        "UI_PhoneContacts_OVL.png",
+        "UI_PhoneHor_OVL.png",
+        "UI_PhoneHorGallery_OVL.png",
+        "UI_PhoneTrayANIM_OVL.png",
+        "UI_PhoneVert_OVL.png",
+        "UI_PhoneWP_OVL.png"
+    ],
+    "Video": [
+        "tpast_BG.jpg",
+        "UI_Play_BG.jpg",
+        "MID_MainMenu_BG.jpg",
+        "HER_Logo_ANIM.mp4",
+        "ND_LOGO_ANIM.mp4"
+    ],
+    "Sound": [
+        "VEN_Splash_SFX.wav",
+        "MainTheme_SFX.wav"
+    ]
+}

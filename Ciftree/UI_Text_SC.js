@@ -1,12 +1,48 @@
 function UI_Text_SC() {
     AutotextInit.Create({
         NIL: "",
+
+        UIMM01: "Continue",
+        UIMM02: "New Game",
+        UIMM03: "Load Game",
+        UIMM04: "Tutorial",
+        UIMM05: "Settings",
+        UIMM06: "Help",
+        UIMM07: "Extras",
+        UIMM08: "More ND",
+        UIMM09: "Quit",
+
+        UIMNU01: "Main Menu",
+        UIMNU02: "Save Game",
+        UIMNU03: "Load Game",
+        UIMNU04: "Settings",
+        UIMNU05: "Help",
+        UIMNU06: "Resume Game",
+
+        UIDIF01: "Choose your difficulty level",
+        UIDIF02: "Amateur Sleuth",
+        UIDIF03: "Regular Puzzles",
+        UIDIF04: "Hints Available",
+        UIDIF05: "Detailed Tasklist",
+        UIDIF06: "Master Sleuth",
+        UIDIF07: "More Challenging Puzzles",
+        UIDIF08: "No Hints",
+        UIDIF09: "Basic Tasklist",
+
+        UIFRM01: "Menu",
+        UIFRM02: "Tasks",
+        UIFRM03: "Journal",
+        UIFRM04: "Notes",
+        UIFRM05: "Observations",
+        UIFRM06: "Suspects",
+
         UISAV01: "Save",
         UISAV02: "Do you want to save first?",
         UISAV03: "Yes",
         UISAV04: "No",
         UISAV05: "Do you want to overwrite the saved game?",
         UISAV06: "Do you want to quit? All unsaved progress will be lost.",
+
         UIOPT01: "Voice Volume",
         UIOPT02: "Effects Volume",
         UIOPT03: "Music Volume",
@@ -18,8 +54,10 @@ function UI_Text_SC() {
         UIOPT11: "Play the game in a smaller window",
         UIOPT12: "Small Text",
         UIOPT13: "Large Text",
+
         UILOD01: "Load",
         UILOD02: "New",
+
         UICHT01: "<vc><hc><f15><c3>OK",
         UICHT02: "<vc><hc><f15><c3>Cancel",
         UICHT03: "<vc><hc><f15><c3>Save",
@@ -45,6 +83,7 @@ function UI_Text_SC() {
         UICHT34: "<vc><hc><f15><c3>Inspector",
         UICHT35: "<vc><hc><f15><c3>Copy",
         UICHT36: "<vc><hc><f15><c3>Copy All",
+
         TTIP01: "View your inventory",
         TTIP02: "Close your inventory",
         TTIP03: "Read your journal",
@@ -61,16 +100,22 @@ function UI_Text_SC() {
         TTIP14: "Use your GPS device",
         TTIP15: "Close your GPS device",
         TTIP16: "Complete game to unlock",
+
         NanPhone: "PB:Nancy",
         BessPhone: "PB:Bess",
+
         UI_Quit01: "Click to Start a New Game",
+
         FGTEXT1: "Click to replay Tutorial.",
+
         NextHint: "<vc><hc>I need a hint",
         NextHintSpoiler: "<vc><hc>I need a solution",
         RearrangeHelp: "Right Click And Hold To Rotate.",
         LockpickHelp: "Right Click on inserted pick to remove it.",
+
         HELPTEXT1: "Right Click to Rotate.",
         HELPTEXT2: "Right Click to add to column",
+        
         LINK_Website: "http://www.herinteractive.com",
         LINK_Newsletter: "http://www.herinteractive.com/newsletter-archive.php",
         LINK_Facebook: "http://www.facebook.com/NancyDrewPCGames",

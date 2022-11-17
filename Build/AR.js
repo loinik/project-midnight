@@ -31,7 +31,8 @@ class ar {
         animate();
 
         function init() {
-
+            THREE.Cache.enabled = true;
+            
             obj_cont = document.createElement('div');
             obj_cont.id = "threejsscene";
             document.querySelector("#scene").appendChild(obj_cont);
