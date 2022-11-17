@@ -4,12 +4,6 @@ function TitleMenu_SC(anim = true) {
         bg: "MID_MainMenu_BG",
         z: 1
     });
-    let tileMenuBG = AR.Movie({
-        movie: "MID_MainMenu_BG",
-        //source: Viewport.uiSize,
-        onScreen: Viewport.uiSize,
-        pauseOnLastFrame: true
-    });
     let titleOVL = AR.Overlay({
         ovl: "MID_MainMenuTitle_OVL",
         source: [0, 0, 808, 366],
@@ -170,7 +164,7 @@ function TitleMenu_SC(anim = true) {
             themeSound.play();
         }
     });
-    let returnArray = [sum, titleOVL, nancyDrewOVL, mainMenuOVL, newGameButton, loadGameButton, helpButton, optionsButton, extrasButton, moreNDButton, quitButton];
+    let returnArray = [sum, themeSound, titleOVL, nancyDrewOVL, mainMenuOVL, newGameButton, loadGameButton, helpButton, optionsButton, extrasButton, moreNDButton, quitButton];
     if(anim == true) {
         returnArray.push(coverBG);
         oneSecond.start();

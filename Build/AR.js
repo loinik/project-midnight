@@ -31,11 +31,12 @@ class ar {
         animate();
 
         function init() {
+            let gameScene = document.querySelector("#scene");
             THREE.Cache.enabled = true;
-            
+
             obj_cont = document.createElement('div');
             obj_cont.id = "threejsscene";
-            document.querySelector("#scene").appendChild(obj_cont);
+            document.querySelector(`#scene > #${sc}`).appendChild(obj_cont);
 
             camera = new THREE.PerspectiveCamera(45, 1024 / 690, 1, 2000);
             camera.position.z = 250;
@@ -80,7 +81,7 @@ class ar {
             renderer.setPixelRatio(window.devicePixelRatio);
             renderer.setSize(1024, 690);
             renderer.domElement.style.backgroundImage = 'url(Video/' + info["bg"] + '.jpg)';
-            document.querySelector("#threejsscene").appendChild(renderer.domElement);
+            obj_cont.appendChild(renderer.domElement);
 
             let controls = new THREE.OrbitControls(camera, renderer.domElement);
             controls.enableZoom = false;
@@ -106,6 +107,8 @@ class ar {
             camera.lookAt(scene.position);
             renderer.render(scene, camera);
         }
+
+        //return init();
     }
 
     Overlay(info) {
@@ -365,13 +368,15 @@ class ar {
             source.type = "audio/wav";
 
             sound.append(source);
-            document.querySelector("#scene").append(sound);
-            document.querySelector("#" + info["sounds"]).play();
+            sound.dataset.autoplay = true;
+            //document.querySelector("#scene").append(sound);
+            //document.querySelector("#" + info["sounds"]).play();
             if(info["OnEnd"]) {
                 sound.addEventListener("ended", function(event) {
                     info["OnEnd"]();
                 });
             }
+            return sound;
         }
         else {
             return snd;
@@ -397,14 +402,18 @@ class ar {
 
         let fontNum = (Font.Parse(info["text"])) ? Font.Parse(info["text"]) : 13;
         let fontInfo = fonts[fontNum];
+        let align = (info["align"]) ? info["align"] : "center";
+        let verticalAlign = (info["verticalAlign"]) ? info["verticalAlign"] : "top";
 
         Text.style.color = colors[Color.Parse(info["text"])];
         Text.style.fontFamily = fontInfo["family"];
         Text.style.fontSize = fontInfo["size"] + "px";
+        Text.style.justifyContent = align;
+        Text.style.alignItems = verticalAlign;
 
         Text.id = "textPane";
 
-        Text.innerHTML = info["text"];
+        Text.innerHTML = info["text"].replace(/<[^>]*>?/gm, '');
         return Text;
     }
 
@@ -433,31 +442,35 @@ class ar {
                 video.setAttribute('playsinline', 'playsinline');
                 video.style.pointerEvents = "none";
 
+                let ext = (info["webm"]) ? "webm" : "mp4";
+
                 var source = document.createElement("source");
-                source.src = "Video/" + info["movie"] + ".mp4";
-                source.type = "video/mp4";
+                source.src = "Video/" + info["movie"] + `.${ext}`;
+                source.type = "video/" + ext;
 
                 video.append(source);
 
-
                 if (info["OnEnd"]) {
-                    video.addEventListener('ended', function(event) {
+                    video.addEventListener('ended', function() {
                         document.querySelector("#" + info["id"]).remove();
                         info["OnEnd"]();
                     });
                 }
                 else {
-                    video.addEventListener('ended', function(event) {
+                    video.addEventListener('ended', function() {
                         document.querySelector("#" + info["id"]).remove();
                     });
                 }
 
-                document.querySelector("#scene").append(video);
-
+                
+                //document.querySelector("#scene").append(video);
+                //
                 if (info["active"] == true) {
-                    document.querySelector("#" + info["id"]).play();
+                    video.dataset.autoplay = true;
+                    //document.querySelector("#" + info["id"]).play();
                 }
-                break;
+                return video;
+                //break;
             case "img":
                 let Rectangle = document.createElement("canvas");
                 if (info["id"]) {
@@ -477,8 +490,10 @@ class ar {
                 if(info["animationName"] && info["duration"]) {
                     Rectangle.style.animationName = info["animationName"];
                     Rectangle.style.animationDuration = info["duration"] + "s";
+                    Rectangle.style.animationDelay = (info["delay"]) ? info["delay"] + "s" : "0s";
                     Rectangle.style.animationFillMode = "forwards";
                     Rectangle.style.pointerEvents = "none";
+                    if(info["animationName"] == "fadeIn") Rectangle.style.opacity = 0;
                 }
 
                 let image = new Image();

@@ -108,7 +108,7 @@ function s0() {
             Scene.LetsGo("TitleMenu_SC");
         }
     })
-    return [tileMenuBG, nancyDrewOVL, titleOVL, mainMenuOVL, skip_HS];
+    return [splashSFX, HER_Logo_ANIM, nancyANIM, tileMenuBG, nancyDrewOVL, titleOVL, mainMenuOVL, skip_HS];
     //var Initialize = AR.Override({
     //    RunOnce: function() {
     //    Brain.Bonus_BR = true;

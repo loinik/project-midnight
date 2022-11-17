@@ -1,3 +1,5 @@
+//import { Scene } from "../Build/three/three";
+
 function s2625() {
     var sum = AR.Summary({
         env: "PHL",
@@ -25,10 +27,7 @@ function s2625() {
         OnUp: function() {
             //missing.play();
             Flags.Night_FL = (Flags.Night_FL) ? false : true;
-            document.querySelector("#scene").innerHTML = "";
-            UI_Transition_SC().forEach(element => {
-                document.querySelector("#scene").append(element);
-            });
+            Scene.LetsGo("UI_Transition_SC");
         }
     });
     return [sum, backNAV, lookNAV];

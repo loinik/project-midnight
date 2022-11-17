@@ -5,16 +5,14 @@ function UI_Transition_SC() {
     });
     var transitionAnim = AR.Movie({
         movie: "UI_Trans" + (Flags.Night_FL ? "D2N" : "N2D") + "_BG",
-        z: 1,
+        z: 3,
         type: "anim",
         onScreen: [0, 0, 1024, 690],
         active: true,
         id: "transitionAnim",
+        webm: true,
         OnEnd: function() {
-            document.querySelector("#scene").innerHTML = "";
-            s2600().forEach(element => {
-                document.querySelector("#scene").append(element);
-            });
+            Scene.LetsGo("s2600");
         }
     });
     return [sum, transitionAnim];

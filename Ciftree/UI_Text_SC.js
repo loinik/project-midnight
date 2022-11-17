@@ -2,6 +2,10 @@ function UI_Text_SC() {
     AutotextInit.Create({
         NIL: "",
 
+        UIOPN01: "<f5><c3>Loading...",
+        UIOPN02: "<f5><c3>Click to Continue",
+        UIOPN03: "<f5><c3>Tap to Continue",
+
         UIMM01: "Continue",
         UIMM02: "New Game",
         UIMM03: "Load Game",
