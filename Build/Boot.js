@@ -18,6 +18,7 @@ const touch = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0) || (n
 const FlagsInit = new flagsInit();
 
 var Flags = {};
+var cachedEnvs = [];
 var autotext_Temp = {};
 var autotext = {};
 var fonts = {};

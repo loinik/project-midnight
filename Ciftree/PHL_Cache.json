@@ -1,0 +1,23 @@
+{
+    "Ciftree": [
+        "PHL_BookshelfSpraycan_OVL.png"
+    ],
+    "Video": [
+        "PHL_Node0000_BG.webp",
+        "PHL_Node0001_BG.webp",
+        "PHL_Node0002_BG.webp",
+        "PHL_Node0003_BG.webp",
+        "PHL_NodeNight0000_BG.webp",
+        "PHL_NodeNight0001_BG.webp",
+        "PHL_NodeNight0002_BG.webp",
+        "PHL_NodeNight0003_BG.webp",
+        "PHL_Bin_BG.webp",
+        "PHL_BinNight_BG.webp",
+        "PHL_EasterEgg_BG.webp",
+        "PHL_EasterEggNight_BG.webp",
+        "PHL_Fans_BG.webp",
+        "PHL_FansNight_BG.webp",
+        "PHL_Bookshelf_BG.webp",
+        "PHL_BookshelfNight_BG.webp"
+    ]
+}

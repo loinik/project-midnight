@@ -3,6 +3,26 @@ class ar {
         if(info["Run"]) info["Run"]();
     }
 
+    Cache(array, dir) {
+        if (!Cache.list) {
+            Cache.list = [];
+        }
+        var list = Cache.list;
+        for (var i = 0; i < array.length; i++) {
+            var img = new Image();
+            img.onload = function() {
+                var index = list.indexOf(this);
+                if (index !== -1) {
+                    // remove image from the array once it's loaded
+                    // for memory consumption reasons
+                    list.splice(index, 1);
+                }
+            }
+            list.push(img);
+            img.src = dir + "/" + array[i];
+        }
+    }
+
     Inspection(info) {
         let camera, scene, renderer;
         let obj_cont;
@@ -485,6 +505,21 @@ class ar {
         return timer;
     }
 
+    getJSON = function(url, callback) {
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', url, true);
+        xhr.responseType = 'json';
+        xhr.onload = function() {
+            var status = xhr.status;
+            if (status === 200) {
+                callback(null, xhr.response);
+            } else {
+                callback(status, xhr.response);
+            }
+        };
+        xhr.send();
+    };
+
     Summary(info) {
         let ext = (info["ext"]) ? info["ext"] : "jpg";
         let Rectangle = document.createElement("canvas");
@@ -497,6 +532,20 @@ class ar {
         let image = new Image();
         image.src = "Video/" + info["bg"] + `.${ext}`; 
         bg = info["bg"];
+        if(env != info["env"] && !cachedEnvs.includes(info["env"])) {
+            cachedEnvs.push(info["env"]);
+            AR.getJSON("Ciftree/" + info["env"] + "_Cache.json", function(err, data) {
+                if (err !== null) {
+                    console.log('Something went wrong: ' + err);
+                } else {
+                    //console.log('Your query count: ' + data.query.count);
+                    let ciftree_files = data.Ciftree;
+                    let video_files = data.Video;
+                    AR.Cache(ciftree_files, "Ciftree");
+                    AR.Cache(video_files, "Video");
+                }
+            });
+        }
         env = info["env"];
         image.onload = function(){
             let frameCanvas = Rectangle;
