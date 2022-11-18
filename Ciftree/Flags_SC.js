@@ -34,5 +34,6 @@ FlagsInit.Create({
     Night_FL: null,
     Touch_FL: null,
     Gamepad_FP: null,
-    Desktop_FL: null
+    Desktop_FL: null,
+    Switch_toPHG: null
 })

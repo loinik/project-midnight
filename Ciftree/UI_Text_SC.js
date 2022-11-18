@@ -3,8 +3,8 @@ function UI_Text_SC() {
         NIL: "",
 
         UIOPN01: "<f5><c3>Loading...",
-        UIOPN02: "<f5><c3>Click to Continue",
-        UIOPN03: "<f5><c3>Tap to Continue",
+        UIOPN02: "<f5><c3>Click to Continue...",
+        UIOPN03: "<f5><c3>Tap to Continue...",
 
         UIMM01: "Continue",
         UIMM02: "New Game",

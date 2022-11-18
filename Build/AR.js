@@ -187,6 +187,7 @@ class ar {
 
         if(info["active"] == false) {
             parent.style.visibility = "hidden";
+            parent.pointerEvents = "none";
         }
 
         if(info["z"]) {
@@ -422,6 +423,7 @@ class ar {
         let jpg = "Video/" + info["movie"] + ".jpg";
         let png = "Video/" + info["movie"] + ".apng";
         let z = (info["z"]) ? info["z"] : 1;
+        let ext;
 
         let type = (info["type"]) ? info["type"] : "img";
         switch(type) {
@@ -442,7 +444,7 @@ class ar {
                 video.setAttribute('playsinline', 'playsinline');
                 video.style.pointerEvents = "none";
 
-                let ext = (info["webm"]) ? "webm" : "mp4";
+                ext = (info["webm"]) ? "webm" : "mp4";
 
                 var source = document.createElement("source");
                 source.src = "Video/" + info["movie"] + `.${ext}`;
@@ -481,6 +483,12 @@ class ar {
                 Rectangle.width = info["onScreen"][2];
                 Rectangle.height = info["onScreen"][3];
                 Rectangle.style.zIndex = z;
+                Rectangle.style.pointerEvents = "none"; 
+                ext = (info["webm"]) ? "webp" : "jpg";
+
+                if(info["active"] == false) {
+                    Rectangle.style.visibility = "hidden";
+                }
 
                 if(info["active"] == false && !info["opacity"] && info["transition"]) {
                     Rectangle.style.opacity = 0;
@@ -497,7 +505,7 @@ class ar {
                 }
 
                 let image = new Image();
-                image.src = "Video/" + info["movie"] + ".jpg"; 
+                image.src = "Video/" + info["movie"] + `.${ext}`; 
                 image.onload = function(){
                     let frameCanvas = Rectangle;
                     let ctx = frameCanvas.getContext("2d");
