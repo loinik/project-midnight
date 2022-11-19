@@ -10,7 +10,7 @@ function UI_Transition_SC() {
         onScreen: [0, 0, 1024, 690],
         active: true,
         id: "transitionAnim",
-        webm: true,
+        webm: false,
         OnEnd: function() {
             Scene.LetsGo("s2600");
         }
