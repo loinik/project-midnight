@@ -17,21 +17,19 @@ const FontColorsInit = new fontColorsInit();
 const touch = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0) || (navigator.msMaxTouchPoints > 0);
 const FlagsInit = new flagsInit();
 
+var Brain = {};
 var Flags = {};
 var cachedEnvs = [];
 var autotext_Temp = {};
 var autotext = {};
 var fonts = {};
 var colors = {};
-var Viewport = {
-    uiSize: [0, 0, 1024, 768]
-}
+var Viewport = { uiSize: [0, 0, 1024, 768] };
 
 var env;
 var bg;
 var sc;
 
-Flags.Night_FL = false;
 Flags.Touch = touch;
 
 if (Flags.Touch) {
@@ -63,9 +61,7 @@ function openFullscreen() {
 }
 
 autoResize();
-window.addEventListener("resize", function(event) {
-    autoResize()
-});
+window.addEventListener("resize", autoResize());
 
 if(Flags.touch) {
     ScreenOrientation.addEventListener("change", function(event) {

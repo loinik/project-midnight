@@ -1,6 +1,7 @@
 class ar {
     Override(info) {
         if(info["Run"]) info["Run"]();
+        if(info["RunOnce"]) return info["RunOnce"].bind();
     }
 
     Cache(array, dir) {
@@ -242,6 +243,7 @@ class ar {
 
     Button (info) {
         let o = document.createElement("div");
+
         if(info["active"] == false) {
             o.style.visibility = "hidden";
         }
@@ -252,11 +254,13 @@ class ar {
             o.style.zIndex = 2;
         }
         
-
         o.style.position = "relative";
         
+
+        //overOvl
         info["overOvl"].style.opacity = 0;
 
+        //hs
         info["hs"].addEventListener("mouseover", function(event){
             info["overOvl"].style.opacity = 1;
         });
@@ -279,7 +283,9 @@ class ar {
             }
         });
 
-        o.append(info["overOvl"], info["hs"]);
+        let baseOvl = (info["baseOvl"]) ? info["baseOvl"] : "";
+
+        o.append(baseOvl, info["overOvl"], info["hs"]);
         return o;
         
     }
@@ -312,7 +318,9 @@ class ar {
     }
 
     Sound(info) {
-        var snd = new Audio("Sound/" + info["sounds"] + ".wav");
+        var snd;
+        let sound_file = (Array.isArray(info["sounds"])) ? info["sounds"][Math.floor(Math.random() * info["sounds"].length)] : info["sounds"];
+        snd = new Audio("Sound/" + sound_file + ".wav");
         if(info["volume"]) snd.volume = info["volume"];
         snd.currentTime = 0;
 

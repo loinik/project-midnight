@@ -228,16 +228,13 @@ function UI_NotesTasklist_SC() {
         expandSound.play();
     
         document.querySelector("#NotesTasklist").style.transform = "TranslateY(0)";
-        //document.querySelector("#collapseButton").style.visibility = "visible";
     
         switch (activeTab) {
             case 1:
-                //alert("11");
                 activatedTasklistExpand();
                 deactivatedNotesExpand();
                 break;
             case 2:
-                //alert("12");
                 activatedNotesExpand();
                 deactivatedTasklistExpand();
                 break;
@@ -249,16 +246,13 @@ function UI_NotesTasklist_SC() {
         collapseSound.play();
     
         document.querySelector("#NotesTasklist").style.transform = "TranslateY(400px)";
-        //document.querySelector("#collapseButton").style.visibility = "hidden";
     
         switch (activeTab) {
             case 1:
-                //alert("13");
                 activatedTasklistCollapse();
                 deactivatedNotesCollapse();
                 break;
             case 2:
-                //alert("14");
                 activatedNotesCollapse();
                 deactivatedTasklistCollapse();
                 break;
@@ -278,12 +272,10 @@ function UI_NotesTasklist_SC() {
                     document.querySelector("#notesOVL").style.visibility = "hidden";
             
                     if(tabsState == "Collapse") {
-                        //alert("21");
                         activatedTasklistCollapse();
                         deactivatedNotesCollapse();
                     }
                     else {
-                        //alert("22");
                         activatedTasklistExpand();
                         deactivatedNotesExpand();
                     }
@@ -298,12 +290,10 @@ function UI_NotesTasklist_SC() {
                     document.querySelector("#notesOVL").style.visibility = "visible";
                 
                     if(tabsState == "Collapse") {
-                        //alert("23");
                         activatedNotesCollapse();
                         deactivatedTasklistCollapse();
                     }
                     else {
-                        //alert("24");
                         activatedNotesExpand();
                         deactivatedTasklistExpand();
                     }

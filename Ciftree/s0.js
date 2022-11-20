@@ -68,7 +68,7 @@ function s0() {
         OnEnd: function() {
             document.querySelector("#mainMenuOVL").style.opacity = 1;
         }
-    })
+    });
     var tileMenuBG = AR.Movie({
         movie: "MID_MainMenu_BG",
         id: "tileMenuBG",
@@ -107,42 +107,39 @@ function s0() {
             if (n) n.pause();
             Scene.LetsGo("TitleMenu_SC");
         }
-    })
+    });
     var Initialize = AR.Override({
         RunOnce: function() {
+            Brain.Bonus_BR = false;
+            //PhoneManager.SetAntenna(2);
+            Flags.Cellphone_Enable_Wallpaper_FL = true;
+            Flags.Cellphone_Enable_Menu_FL = true;
+            Flags.Cellphone_Enable_Camera_FL = true;
+            Flags.Cellphone_Enable_Gallery_FL = true;
+            Flags.Cellphone_Enable_Games_FL = true;
+            Flags.Cellphone_Enable_Messages_FL = true;
+            Flags.Cellphone_Enable_Options_FL = true;
+            Flags.Cellphone_Enable_Talk_FL = false;
+            Flags.Cellphone_Enable_Hints_FL = false;
+            Flags.Cellphone_Enable_Games_FL = Brain.Bonus_BR;
+
+            //ПЕРЕСМОТРЕТЬ ИДЕЮ ЭТОЙ ПЕРЕМЕННОЙ, ВРЕМЕННО:
             Flags.Switch_toPHG = false;
-        }
+            //if (Load.Attic("TutorialReplay") == true) {
+            //    Save.Attic("TutorialReplay", false);
+            //    Scene.Change("TUT_Start_SC");
+            //}
+            //else if (Load.Attic("SkipToBadges") == true) {
+            //    Save.Attic("SkipToBadges", false);
+            //    Scene.Change("Badges_SC");
+            //}
+            //else {
+            //    Scene.Change(Scene.streamName, "TitleMenu_SC");
+            //}
+        },
+        active: false
     });
     return [splashSFX, HER_Logo_ANIM, nancyANIM, tileMenuBG, nancyDrewOVL, titleOVL, mainMenuOVL, skip_HS];
-    
-    //var Initialize = AR.Override({
-    //    RunOnce: function() {
-    //    Brain.Bonus_BR = true;
-    //    //PhoneManager.SetAntenna(2);
-    //    Flags.Cellphone_Enable_Wallpaper_FL = true;
-    //    Flags.Cellphone_Enable_Menu_FL = true;
-    //    Flags.Cellphone_Enable_Camera_FL = true;
-    //    Flags.Cellphone_Enable_Gallery_FL = true;
-    //    Flags.Cellphone_Enable_Games_FL = true;
-    //    Flags.Cellphone_Enable_Messages_FL = true;
-    //    Flags.Cellphone_Enable_Options_FL = true;
-    //    Flags.Cellphone_Enable_Talk_FL = false;
-    //    Flags.Cellphone_Enable_Hints_FL = false;
-    //    Flags.Cellphone_Enable_Games_FL = Brain.Bonus_BR;
-    //    if (Load.Attic("TutorialReplay") == true) {
-    //        Save.Attic("TutorialReplay", false);
-    //        Scene.Change("TUT_Start_SC");
-    //    }
-    //    else if (Load.Attic("SkipToBadges") == true) {
-    //        Save.Attic("SkipToBadges", false);
-    //        Scene.Change("Badges_SC");
-    //    }
-    //    else {
-    //        Scene.Change(Scene.streamName, "TitleMenu_SC");
-    //    }
-    //    },
-    //    active: false
-    //})
     //var defaultOptions = AR.Override({
     //    RunOnce: function() {
     //    if (Load.Attic("fastConvo") == undefined) {
