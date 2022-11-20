@@ -9,7 +9,7 @@ function s2702() {
         onScreen: [202, 70, 824, 640],
         cursor: "Forward",
         active: function() {
-            //return not locked
+            closeDoorSFX.play();
         }
     });
     var backNAV = AR.Hotspot({
@@ -17,8 +17,19 @@ function s2702() {
         scene: "s2700",
         cursor: "Back",
         active: function() {
-            //return not locked
+            closeDoorSFX.play();
         }
+    });
+    let closeDoorSFX = AR.Sound({
+        sounds: [
+            "DoorClose_Wood01_SFX",
+            "DoorClose_Wood02_SFX",
+            "DoorClose_Wood03_SFX"
+        ],
+        id: "closeDoorSFX",
+        channel: "FX1",
+        volume: 0.75,
+        active: false
     });
     return [sum, forwardNAV, backNAV];
 }

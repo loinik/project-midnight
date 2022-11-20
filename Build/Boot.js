@@ -60,8 +60,13 @@ function openFullscreen() {
     }
 }
 
+function getRandomInt(max) {
+    return Math.floor(Math.random() * max);
+  }
+  
+
 autoResize();
-window.addEventListener("resize", autoResize());
+window.addEventListener("resize", autoResize);
 
 if(Flags.touch) {
     ScreenOrientation.addEventListener("change", function(event) {

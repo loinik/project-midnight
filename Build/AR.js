@@ -190,6 +190,11 @@ class ar {
             parent.style.visibility = "hidden";
             parent.pointerEvents = "none";
         }
+        else if(typeof(info["active"]) === "function") {
+            parent.addEventListener("click", function(){
+                info["active"]();
+            });
+        }
 
         if(info["z"]) {
             parent.style.zIndex = info["z"];
@@ -241,7 +246,7 @@ class ar {
         return parent;
     }
 
-    Button (info) {
+    Button(info) {
         let o = document.createElement("div");
 
         if(info["active"] == false) {
@@ -251,7 +256,7 @@ class ar {
             o.style.zIndex = info["z"];
         }
         else {
-            o.style.zIndex = 2;
+            o.style.zIndex = 5;
         }
         
         o.style.position = "relative";
@@ -319,17 +324,17 @@ class ar {
 
     Sound(info) {
         var snd;
-        let sound_file = (Array.isArray(info["sounds"])) ? info["sounds"][Math.floor(Math.random() * info["sounds"].length)] : info["sounds"];
+        
+        let sound_file = (Array.isArray(info["sounds"])) ? info["sounds"][getRandomInt(info["sounds"].length)] : info["sounds"];
         snd = new Audio("Sound/" + sound_file + ".wav");
         if(info["volume"]) snd.volume = info["volume"];
         snd.currentTime = 0;
 
         snd.addEventListener("play", function(event) {
-            let sound = info["sounds"];
             for(var key in autotext){
-                if(info["sounds"] == key) {
+                if(sound_file == key) {
                     let text = AR.Text({
-                        text: autotext[sound],
+                        text: autotext[sound_file],
                         onScreen: [102, 650, 784, 693],
                         useAutotext: true,
                         active: false
@@ -364,18 +369,20 @@ class ar {
             snd.loop = true;
         }
 
-        if(info["id"] == true) {
+        if(info["id"] == true && info["id"] != "file") {
             snd.id = info["id"];
+        } else if(info["id"] == true && info["id"] == "file") {
+            snd.id = sound_file;
         }
 
         if(info["active"] == true) {
             var sound = document.createElement("audio");
-            sound.id = info["sounds"];
-
+            sound.id = sound_file;
+            
             var source = document.createElement("source");
-            source.src = "Sound/" + info["sounds"] + ".wav";
+            source.src = "Sound/" + sound_file + ".wav";
             source.type = "audio/wav";
-
+            
             sound.append(source);
             sound.dataset.autoplay = true;
             //document.querySelector("#scene").append(sound);

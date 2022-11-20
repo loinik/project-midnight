@@ -10,7 +10,7 @@ function s2700() {
         cursor: "Manipulate",
         hint: false,
         active: function() {
-            //return not locked
+            openDoorSFX.play();
         }
     });
     var backNAV = AR.Hotspot({
@@ -20,6 +20,17 @@ function s2700() {
         active: function() {
             //return not locked
         }
+    });
+    let openDoorSFX = AR.Sound({
+        sounds: [
+            "DoorOpen_Wood01_SFX",
+            "DoorOpen_Wood02_SFX",
+            "DoorOpen_Wood03_SFX"
+        ],
+        id: "file",
+        channel: "FX1",
+        volume: 0.75,
+        active: false
     });
     return [sum, forwardNAV, backNAV];
 }

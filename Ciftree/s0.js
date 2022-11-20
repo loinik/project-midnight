@@ -37,6 +37,7 @@ function s0() {
         OnEnd: function() {
             fourSeconds.start();
             document.querySelector("#nancyDrewOVL").style.visibility = "visible";
+            document.querySelector("#tileMenuBG").style.visibility = "visible";
             document.querySelector("#tileMenuBG").style.opacity = 1;
         }
     });
