@@ -248,6 +248,7 @@ class ar {
 
     Button(info) {
         let o = document.createElement("div");
+        o.classList.add("overlayElement");
 
         if(info["active"] == false) {
             o.style.visibility = "hidden";
@@ -258,9 +259,8 @@ class ar {
         else {
             o.style.zIndex = 5;
         }
-        
-        o.style.position = "relative";
-        
+        o.style.webkitTransform = "translate3D(0px,0px,1px)";
+        o.style.position = "absolute";        
 
         //overOvl
         info["overOvl"].style.opacity = 0;
@@ -423,6 +423,7 @@ class ar {
         let Text = document.createElement("div");
         Text.style.position = "absolute";
         Text.style.zIndex = 10;
+        Text.style.webkitTransform = "translate3D(0px,0px,1px)";
 
         var onScreen = Rect.New(info["onScreen"][0], info["onScreen"][1], info["onScreen"][2], info["onScreen"][3]);
 

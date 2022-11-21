@@ -39,14 +39,21 @@ if (Flags.Touch) {
 
 function autoResize() {
     let position = (window.innerHeight > window.innerWidth) ? "portrait" : "landscape";
+    let transformValue;
     switch(position) {
         case "landscape":
-            game.style.transform = "scale(" + (window.innerHeight - parseInt(getComputedStyle(document.documentElement).getPropertyValue("--sab"))) / 768 + ")";
-            cursor.style.transform = "scale(" + (window.innerHeight - parseInt(getComputedStyle(document.documentElement).getPropertyValue("--sab"))) / 768 + ")";
+            transformValue = "scale(" + (window.innerHeight - parseInt(getComputedStyle(document.documentElement).getPropertyValue("--sab"))) / 768 + ")";
+            game.style.transform = transformValue;
+            game.style.webkitTransform = transformValue;
+            cursor.style.transform = transformValue;
+            cursor.style.webkitTransform = transformValue;
             break;
         case "portrait":
-            game.style.transform = "scale(" + window.innerWidth / 1024 + ")";
-            cursor.style.transform = "scale(" + window.innerWidth / 1024 + ")";
+            transformValue = "scale(" + window.innerWidth / 1024 + ")";
+            game.style.transform = transformValue;
+            game.style.webkitTransform = transformValue;
+            cursor.style.transform = transformValue;
+            cursor.style.webkitTransform = transformValue;
             break;
     }   
 }
