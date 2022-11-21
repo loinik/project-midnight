@@ -336,7 +336,7 @@ class ar {
                 if(sound_file == key) {
                     let text = AR.Text({
                         text: autotext[sound_file],
-                        onScreen: [102, 650, 784, 693],
+                        onScreen: [102, 650, 782, 693],
                         useAutotext: true,
                         active: false
                     });
@@ -363,7 +363,7 @@ class ar {
                 document.querySelectorAll(".gameNAV").forEach(gNAV => {
                     gNAV.style.setProperty("visibility", "visible", "important");
                 });
-                //to fix it for captions and music in the future, plz
+                //to fix it for captions and music in the future, plz:
                 if(Flags.TouchNav_FL) {
                     document.querySelectorAll(".touchNAV").forEach(tNAV => {
                         tNAV.style.setProperty("visibility", "visible", "important");
