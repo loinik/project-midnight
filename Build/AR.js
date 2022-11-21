@@ -324,9 +324,10 @@ class ar {
 
     Sound(info) {
         var snd;
-        
-        let sound_file = (Array.isArray(info["sounds"])) ? info["sounds"][getRandomInt(info["sounds"].length)] : info["sounds"];
-        snd = new Audio("Sound/" + sound_file + ".wav");
+        var sound_file = (Array.isArray(info["sounds"])) ? info["sounds"][getRandomInt(info["sounds"].length)] : info["sounds"];
+        var path = "Sound/" + sound_file + ".wav";
+        snd = new Audio();
+        snd.src = path;
         if(info["volume"]) snd.volume = info["volume"];
         snd.currentTime = 0;
 
@@ -380,11 +381,11 @@ class ar {
             snd.loop = true;
         }
 
-        if(info["id"] == true && info["id"] != "file") {
-            snd.id = info["id"];
-        } else if(info["id"] == true && info["id"] == "file") {
-            snd.id = sound_file;
-        }
+        //if(info["id"] == true && info["id"] != "file") {
+        //    snd.id = info["id"];
+        //} else if(info["id"] == true && info["id"] == "file") {
+        //    snd.id = sound_file;
+        //}
 
         if(info["active"] == true) {
             var sound = document.createElement("audio");

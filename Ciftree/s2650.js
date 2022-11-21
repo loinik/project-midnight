@@ -51,7 +51,7 @@ function s2650() {
         duration: 3,
         OnDone: function() {
             gameScene.style.pointerEvents = "auto";
-            Scene.LetsGo("s2650");
+            Scene.Restart();
             //Flags.LOU_InBathroom_FL = false
         },
         active: function() {
@@ -75,7 +75,7 @@ function s2650() {
         active: false,
         z: 8
     });
-    let NDBathroomVO = AR.Sound({
+    var NDBathroomVO = AR.Sound({
         sounds: [
             "Nancy_Bathroom01_SFX",
             "Nancy_Bathroom02_SFX",
@@ -104,7 +104,7 @@ function s2650() {
         },
         active: false
     });
-    let openDoorSFX = AR.Sound({
+    var openDoorSFX = AR.Sound({
         sounds: [
             "DoorOpen_Wood_French01_SFX",
             "DoorOpen_Wood_French02_SFX",
@@ -117,7 +117,7 @@ function s2650() {
         volume: 0.85,
         active: false
     });
-    let closeDoorSFX = AR.Sound({
+    var closeDoorSFX = AR.Sound({
         sounds: [
             "DoorClose_Wood_French01_SFX",
             "DoorClose_Wood_French02_SFX",

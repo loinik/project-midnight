@@ -22,4 +22,19 @@ class scene {
             if(oldScene) document.querySelector(`#${oldScene}`).remove()
         }, 10);
     }
+
+    Restart(bool = true) {
+        let scene = document.querySelector(`#scene > #${sc}`);
+        scene.querySelectorAll("*").forEach(element => {
+            element.classList.add("toRemove");
+        });
+        window[sc](bool).forEach(element => {
+            scene.append(element);
+        });
+        setTimeout(function() {
+            document.querySelectorAll(`#scene > #${sc} > .toRemove`).forEach(element => {
+                element.remove()
+            });
+        }, 10);
+    }
 }
