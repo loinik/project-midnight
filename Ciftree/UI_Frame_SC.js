@@ -103,6 +103,7 @@ function UI_Frame_SC() {
         OnUp: disableTouchNav.bind(this) 
     });
     function enableTouchNav() {
+        Flags.TouchNav_FL = true;
         document.querySelector("#touchNav").style.visibility = "hidden";
         document.querySelector("#touchNav_Button").style.visibility = "hidden";
         document.querySelector("#touchNavPressed").style.visibility = "visible";
@@ -110,6 +111,7 @@ function UI_Frame_SC() {
         document.querySelector("body").classList.add("navHint");
     }
     function disableTouchNav() {
+        Flags.TouchNav_FL = false;
         document.querySelector("#touchNav").style.visibility = "visible";
         document.querySelector("#touchNav_Button").style.visibility = "visible";
         document.querySelector("#touchNavPressed").style.visibility = "hidden";

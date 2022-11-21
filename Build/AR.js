@@ -360,9 +360,15 @@ class ar {
                 if(document.querySelector("div#textPane")) {
                     document.querySelector("div#textPane").remove();
                 }
-                document.querySelectorAll(".gameNAV, .touchNAV").forEach(allNAV => {
-                    allNAV.style.setProperty("visibility", "visible", "important");
+                document.querySelectorAll(".gameNAV").forEach(gNAV => {
+                    gNAV.style.setProperty("visibility", "visible", "important");
                 });
+                //to fix it for captions and music in the future, plz
+                if(Flags.TouchNav_FL) {
+                    document.querySelectorAll(".touchNAV").forEach(tNAV => {
+                        tNAV.style.setProperty("visibility", "visible", "important");
+                    });
+                }
             }
             if(typeof(info["OnEnd"]) === "function") {
                 info["OnEnd"]();

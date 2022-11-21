@@ -33,6 +33,7 @@ FlagsInit.Create({
     UI_TasklistExpanded_FL: null,
     Night_FL: null,
     Touch_FL: null,
+    TouchNav_FL: null,
     Gamepad_FP: null,
     Desktop_FL: null,
     Switch_toPHG: null
