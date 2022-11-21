@@ -3,6 +3,7 @@ const body = document.querySelector("body");
 const gameFrame = document.querySelector("#game");
 const cursor = document.querySelector("#cursor");
 const uiFrame = document.querySelector("#uiFrame");
+const gameScene = document.querySelector("#scene");
 
 const Rect = new rect();
 const AR = new ar();
@@ -62,7 +63,29 @@ function openFullscreen() {
 
 function getRandomInt(max) {
     return Math.floor(Math.random() * max);
-  }
+}
+
+function MakeVideoFader(object) {
+    let action = {};
+
+    let opacity = (object["fade"] == "out") ? 0 : 1;
+    let time = object["duration"];
+    let timeout = time * 1000;
+
+    action.Restart = function() {
+        gameScene.style.animationName = (opacity) ? "fadeIn" : "fadeOut";
+        gameScene.style.animationDuration = time + "s";
+        gameScene.style.animationDelay = (object["delay"]) ? object["delay"] + "s" : "0s";
+        gameScene.style.opacity = opacity;
+        gameScene.style.animationFillMode = "forwards";
+        gameScene.style.pointerEvents = "none";
+        if(typeof(object["OnDone"]) === "function") {
+            window.setTimeout(object["OnDone"], timeout);
+        }
+    }
+
+    return action;
+}
   
 
 autoResize();

@@ -348,15 +348,26 @@ class ar {
         });
 
         snd.addEventListener("ended", function(event) {
-            document.querySelector("#" + info["id"]).remove();
+            if(document.querySelector("#" + info["id"])) {
+                document.querySelector("#" + info["id"]).remove();
+            }
+            else if(document.querySelector("div#textPane")) {
+                document.querySelector("div#textPane").remove();
+            }
+            
             if(info["channel"] != "Theme") {
-                document.querySelector("#textPane").remove();
+                if(document.querySelector("div#textPane")) {
+                    document.querySelector("div#textPane").remove();
+                }
                 document.querySelectorAll(".gameNAV, .touchNAV").forEach(allNAV => {
                     allNAV.style.setProperty("visibility", "visible", "important");
                 });
             }
-            if(info["OnEnd"]) {
+            if(typeof(info["OnEnd"]) === "function") {
                 info["OnEnd"]();
+            }
+            if(typeof(info["OnDone"]) === "function") {
+                info["OnDone"]();
             }
             if(info["loop"] == true) {
                 this.currentTime = 0;
@@ -390,6 +401,11 @@ class ar {
             if(info["OnEnd"]) {
                 sound.addEventListener("ended", function(event) {
                     info["OnEnd"]();
+                });
+            }
+            if(info["OnDone"]) {
+                sound.addEventListener("ended", function(event) {
+                    info["OnDone"]();
                 });
             }
             return sound;
@@ -538,7 +554,8 @@ class ar {
     Timer(info) {
         let timer = {
             start() {
-                window.setTimeout(info["OnEnd"], info["duration"] * 1000);
+                if (typeof(info["OnEnd"]) === "function") window.setTimeout(info["OnEnd"], info["duration"] * 1000);
+                else if (typeof(info["OnDone"]) === "function") window.setTimeout(info["OnDone"], info["duration"] * 1000);
             }
         }
         return timer;

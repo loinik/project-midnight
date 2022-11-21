@@ -5,7 +5,7 @@ function s2604() {
         ext: "webp"
     });
     var locked = false;
-    let forwardNAV = AR.Hotspot({
+    let outdoorNAV = AR.Hotspot({
         scene: "s2701",
         onScreen: [239, 70, 785, 640],
         cursor: "Forward",
@@ -71,5 +71,5 @@ function s2604() {
     //    volume: 0.85,
     //    active: false
     //});
-    return [sum, forwardNAV, backNAV, openDoorOVL];
+    return [sum, outdoorNAV, backNAV, openDoorOVL];
 }

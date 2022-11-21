@@ -4,7 +4,7 @@ function s2702() {
         bg: "PHP_Door" + (Flags.Night_FL ? "Night" : "") + "Open_BG"
     });
     var locked = false;
-    var forwardNAV = AR.Hotspot({
+    var houseNAV = AR.Hotspot({
         scene: "s2600",
         onScreen: [202, 70, 824, 640],
         cursor: "Forward",
@@ -31,5 +31,5 @@ function s2702() {
         volume: 0.75,
         active: false
     });
-    return [sum, forwardNAV, backNAV];
+    return [sum, houseNAV, backNAV];
 }
