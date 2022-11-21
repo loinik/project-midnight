@@ -342,7 +342,7 @@ class ar {
                     document.querySelectorAll(".gameNAV, .touchNAV").forEach(allNAV => {
                         allNAV.style.setProperty("visibility", "hidden", "important");
                     });
-                    game.append(text);
+                    game.insertBefore(text, game.firstChild);
                 }
             }
         });
@@ -421,7 +421,7 @@ class ar {
     Text(info) {
         let Text = document.createElement("div");
         Text.style.position = "absolute";
-        Text.style.zIndex = 5;
+        Text.style.zIndex = 10;
 
         var onScreen = Rect.New(info["onScreen"][0], info["onScreen"][1], info["onScreen"][2], info["onScreen"][3]);
 
