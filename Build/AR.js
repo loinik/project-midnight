@@ -4,7 +4,7 @@ class ar {
         if(info["RunOnce"]) return info["RunOnce"].bind();
     }
 
-    Cache(array, dir) {
+    Cache2(array, dir) {
         if (!Cache.list) {
             Cache.list = [];
         }
@@ -22,6 +22,24 @@ class ar {
             list.push(img);
             img.src = dir + "/" + array[i];
         }
+    }
+
+    async Cache(array, dir) {
+        let filesPromise = new Promise((resolve, reject) => {
+            array.forEach(file => {
+                AR.cacheFile(dir + "/" + file);
+            });
+        });
+        let result = await filesPromise;
+        console.log(result);
+        //filesPromise.then((response) => {
+        //    console.log("cached");
+        //});
+    }
+
+    async cacheFile(path) {
+        console.log(await fetch(path));
+        return await fetch(path);
     }
 
     Inspection(info) {
@@ -370,12 +388,10 @@ class ar {
                     });
                 }
             }
-            if(typeof(info["OnEnd"]) === "function") {
-                info["OnEnd"]();
-            }
-            if(typeof(info["OnDone"]) === "function") {
-                info["OnDone"]();
-            }
+
+            if(typeof(info["OnEnd"]) === "function") info["OnEnd"]();
+            if(typeof(info["OnDone"]) === "function") info["OnDone"]();
+
             if(info["loop"] == true) {
                 this.currentTime = 0;
                 this.play();
