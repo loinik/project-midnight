@@ -1,0 +1,58 @@
+-- Midnight in Salem: the original game's task list (TODO_* from the text sheet),
+-- PREPARED for porting, not wired yet. Grouped by chapter (sheet order, A-Z).
+-- When a chapter is ported: copy its entries into TaskHint_Text_SC as TASKnn
+-- (+ TASKnnH1.. hints) and register them with TaskManager.
+MIDTasks = {
+  -- Day1
+  {id = "TODO_Day1_CheckMei", chapter = "Day1", text = "Try talking to Mei again"},
+  {id = "TODO_Day1_CompleteTour", chapter = "Day1", text = "Visit Witch Tour spots"},
+  {id = "TODO_Day1_FindMeisLighter", chapter = "Day1", text = "Look for Mei's lighter"},
+  {id = "TODO_Day1_InspectHathorneHouse", chapter = "Day1", text = "Search Hathorne House for clues"},
+  {id = "TODO_Day1_StartTour", chapter = "Day1", text = "Go on the witch tour"},
+  {id = "TODO_Day1_TalkTeegan", chapter = "Day1", text = "Talk to Teegan in the museum"},
+  {id = "TODO_Day1_TalkToDeirdre", chapter = "Day1", text = "Talk to Deirdre"},
+  {id = "TODO_Day1_TalkToJudge", chapter = "Day1", text = "Talk to Judge Danforth"},
+  {id = "TODO_Day1_UnlockDoor", chapter = "Day1", text = "Open Judge's door"},
+  -- Day2
+  {id = "TODO_Day2_AlibisArson", chapter = "Day2", text = "Gather alibis for the arson"},
+  {id = "TODO_Day2_AlibisBook", chapter = "Day2", text = "Gather alibis for the book theft"},
+  {id = "TODO_Day2_Breakfast", chapter = "Day2", text = "Help with breakfast"},
+  {id = "TODO_Day2_GetHathorneHouseKey", chapter = "Day2", text = "Get a key to the Hathorne House"},
+  {id = "TODO_Day2_HathorneHouse", chapter = "Day2", text = "Search Hathorne House for clues"},
+  {id = "TODO_Day2_InspectJacket", chapter = "Day2", text = "Inspect the jacket"},
+  {id = "TODO_Day2_InvestigateBreakin", chapter = "Day2", text = "Investigate break-in at court house"},
+  {id = "TODO_Day2_InvestigateCodedNote", chapter = "Day2", text = "Inspect the coded note"},
+  {id = "TODO_Day2_InvestigateGraves", chapter = "Day2", text = "Follow the map"},
+  {id = "TODO_Day2_InvestigateShop", chapter = "Day2", text = "Search Olivia's shop"},
+  {id = "TODO_Day2_InvestigateTheft", chapter = "Day2", text = "Investigate evidence theft"},
+  {id = "TODO_Day2_Permission", chapter = "Day2", text = "Get permission for further investigation"},
+  {id = "TODO_Day2_SearchClues", chapter = "Day2", text = "Look for fakery clues in forest"},
+  {id = "TODO_Day2_UseEQUI", chapter = "Day2", text = "Hunt for ghosts"},
+  -- Day3
+  {id = "TODO_Day3_Breakfast", chapter = "Day3", text = "Plan over breakfast"},
+  {id = "TODO_Day3_FindHouse", chapter = "Day3", text = "Find a Salem map to compare with the waterworks map"},
+  {id = "TODO_Day3_FindSource", chapter = "Day3", text = "Find source of ergot poisoning"},
+  {id = "TODO_Day3_InterviewGhosts", chapter = "Day3", text = "Interview ghost witnesses"},
+  {id = "TODO_Day3_InvestigateCar", chapter = "Day3", text = "Search Jason's car"},
+  {id = "TODO_Day3_MeiClues", chapter = "Day3", text = "Find clues about Mei's disappearance"},
+  {id = "TODO_Day3_ViewCCTV", chapter = "Day3", text = "View CCTV footage"},
+  -- Endgame
+  {id = "TODO_Endgame_Aftermath", chapter = "Endgame", text = "Say goodbye"},
+  {id = "TODO_Endgame_Escape", chapter = "Endgame", text = "Escape from tunnels"},
+  {id = "TODO_Endgame_FindBook", chapter = "Endgame", text = "Find Book of Apologies"},
+  {id = "TODO_Endgame_LightRoom", chapter = "Endgame", text = "Light up the room"},
+  {id = "TODO_Endgame_Navi01", chapter = "Endgame", text = "Find Mei"},
+  {id = "TODO_Endgame_Navi02", chapter = "Endgame", text = "Follow the AW carvings"},
+  {id = "TODO_Endgame_Navi03", chapter = "Endgame", text = "Find Mei"},
+  {id = "TODO_Endgame_OpenDoor", chapter = "Endgame", text = "Get to Deirdre"},
+  {id = "TODO_Endgame_OpenTunnels", chapter = "Endgame", text = "Open up way into tunnels"},
+  {id = "TODO_Endgame_SolveOpti", chapter = "Endgame", text = "Inspect the small house"},
+  {id = "TODO_Endgame_SolveWing", chapter = "Endgame", text = "Get out of basement"},
+  {id = "TODO_Endgame_SolveWoty", chapter = "Endgame", text = "Solve pressure plate puzzle"},
+  -- Prologue
+  {id = "TODO_Prologue_FindThief", chapter = "Prologue", text = "Catch the thief"},
+  {id = "TODO_Prologue_InspectArchives", chapter = "Prologue", text = "Find Book of Apologies"},
+  {id = "TODO_Prologue_InspectArea", chapter = "Prologue", text = "Inspect the area"},
+  {id = "TODO_Prologue_OpenDesk", chapter = "Prologue", text = "Search Sewall's desk"},
+  {id = "TODO_Prologue_OpenWindows", chapter = "Prologue", text = "Let some light in"},
+}

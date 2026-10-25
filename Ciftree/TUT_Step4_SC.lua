@@ -1,0 +1,40 @@
+Scene:Include("Eddy_Include_SC")
+StartEddy():Env({"TUT"}):Scene({
+  "TUT_Step4a_SC"
+}):Sum({
+  "TUT_Desk_BG"
+}):AreaTag({
+  "PREVENTCELLPHONE"
+}):AreaTag({"TUT_Desk"}):TUTText({
+  "TUT_STEP4",
+  isAvailable = "TUT_Step3_BR"
+}):Scene({
+  "TUT_Step4b_SC"
+}):Sum({
+  "TUT_Desk_BG"
+}):AreaTag({
+  "PREVENTCELLPHONE"
+}):AreaTag({"TUT_Desk"}):Flagset({
+  "TUT_Step4a_BR",
+  "start"
+}):TUTPicText({
+  "TUT_STEP4C",
+  "TUT_HintIcon_OVL",
+  source = Rect:New(2, 2, 35, 34)
+}):Jump({
+  "TUT_Step4c_SC",
+  isAvailable = "TUT_TaskH1_Revealed_BR"
+}):Scene({
+  "TUT_Step4c_SC"
+}):Sum({
+  "TUT_Desk_BG"
+}):AreaTag({"TUT_Desk"}):AreaTag({
+  "PREVENTCELLPHONE"
+}):TUTText({"TUT_STEP4D"}):Flagset({
+  "TUT_Step4_BR",
+  "end"
+}):Nav({
+  "back",
+  RectB(-100),
+  "TUT_Node_SC"
+})

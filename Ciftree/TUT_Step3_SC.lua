@@ -1,0 +1,12 @@
+Scene:Include("Eddy_Include_SC")
+StartEddy():Env({"TUT"}):Scene({
+  "TUT_Step3_SC"
+}):Sum({}):Sink({}):AreaTag({
+  "PREVENTALLUIBUTMENU"
+}):VoiceJump({
+  "TUT_VO4_SFX",
+  "TUT_Step2_BR",
+  "TUT_Step3b_SC"
+}):Overlay({
+  "TUT_DeskLetter_OVL"
+})

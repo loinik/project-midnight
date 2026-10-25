@@ -1,0 +1,44 @@
+Scene:Include("TUT_ConvoGlobal_SC")
+Scene:Include("Eddy_Include_SC")
+StartEddy():Env({"TUT"}):Scene({
+  "TUT_PhoneCall_SC"
+}):Sum({}):Convo({
+  {
+    "TUT_NN_Tutorial01_N_SFX",
+    "TUT_NN_Tutorial02_SFX",
+    "TUT_NN_Tutorial03_N_SFX"
+  },
+  "TUT_PhoneCallb_SC"
+}):Scene({
+  "TUT_PhoneCallb_SC"
+}):Sum({}):Convo({
+  {
+    "TUT_NN_Tutorial04_SFX",
+    "TUT_NN_Tutorial05_N_SFX",
+    "TUT_NN_Tutorial06_SFX"
+  },
+  "TUT_PhoneCallc_SC"
+}):Scene({
+  "TUT_PhoneCallc_SC"
+}):Sum({}):Convo({
+  {
+    "TUT_NN_Tutorial07_N_SFX",
+    "TUT_NN_Tutorial08_SFX"
+  },
+  "TUT_PhoneCalld_SC"
+}):Scene({
+  "TUT_PhoneCalld_SC"
+}):Sum({}):Convo({
+  {
+    "TUT_NN_Tutorial09_SFX"
+  },
+  "TUT_PhoneCalle_SC"
+}):Scene({
+  "TUT_PhoneCalle_SC"
+}):Sum({}):Convo({
+  {
+    "TUT_NN_Tutorial10_N_SFX",
+    "TUT_NN_Tutorial11_SFX"
+  },
+  "TUT_EndCall_SC"
+})

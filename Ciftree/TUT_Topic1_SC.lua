@@ -1,0 +1,54 @@
+Scene:Include("TUT_ConvoGlobal_SC")
+Scene:Include("Eddy_Include_SC")
+StartEddy():Env({"TUT"}):Scene({
+  "TUT_Topic1_SC"
+}):Sum({
+  "TUT_Teddy_BG"
+}):Convo({
+  {
+    "TUT_Topic101_N_SFX"
+  },
+  "TUT_Topic1a_SC"
+}):Scene({
+  "TUT_Topic1a_SC"
+}):Sum({
+  "TUT_Teddy_BG"
+}):Flagset({
+  "TUT_Topic1_Done_BR",
+  "end"
+}):Choice({
+  {
+    "TUT_Topic102_SFX"
+  },
+  {
+    "TUT_Topic103A_N_SFX",
+    "TUT_Topic103B_N_SFX"
+  },
+  {
+    "TUT_Topic1b_SC",
+    "TUT_Topic1c_SC"
+  }
+}):TUTText({
+  "TUT_STEP7",
+  offset = Point:New(-50, -200)
+}):Scene({
+  "TUT_Topic1b_SC"
+}):Sum({
+  "TUT_Teddy_BG"
+}):Convo({
+  {
+    "TUT_Topic103A_N_SFX",
+    "TUT_Topic104_SFX",
+    "TUT_Topic105_N_SFX"
+  },
+  "TUT_Topic2_SC"
+}):Scene({
+  "TUT_Topic1c_SC"
+}):Sum({
+  "TUT_Teddy_BG"
+}):Convo({
+  {
+    "TUT_Topic103B_N_SFX"
+  },
+  "TUT_Topic2_SC"
+})

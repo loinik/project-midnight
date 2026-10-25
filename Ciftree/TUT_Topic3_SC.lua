@@ -1,0 +1,25 @@
+Scene:Include("TUT_ConvoGlobal_SC")
+Scene:Include("Eddy_Include_SC")
+StartEddy():Env({"TUT"}):Scene({
+  "TUT_Topic3_SC"
+}):Sum({
+  "TUT_Teddy_BG"
+}):Convo({
+  {
+    "TUT_Topic301_N_SFX"
+  },
+  "TUT_Topic3b_SC"
+}):Scene({
+  "TUT_Topic3b_SC"
+}):Sum({
+  "TUT_Teddy_BG"
+}):Flagset({
+  "TUT_Topic3_Done_BR",
+  "end"
+}):Convo({
+  {
+    "TUT_Topic302_N_SFX",
+    "TUT_Topic303_SFX"
+  },
+  "TUT_ConvoEnd_SC"
+})

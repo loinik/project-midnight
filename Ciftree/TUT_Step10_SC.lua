@@ -1,0 +1,22 @@
+Scene:Include("Eddy_Include_SC")
+StartEddy():Env({"TUT"}):Scene({
+  "TUT_Step10_SC"
+}):Sum({}):Sink({}):AreaTag({
+  "PREVENTALLUIBUTMENU"
+}):AddInv({
+  "TUT_INV_BoxCutter",
+  "end"
+}):Flagset({
+  "TUT_Got_INV_BoxCutter_BR",
+  "end"
+}):Flagset({
+  "TUT_Step10_BR",
+  "start"
+}):Land({
+  "InventoryHot",
+  RectA(),
+  "TUT_KnifeTake_SFX"
+}):Overlay({
+  "TUT_TableBoxCutterCU_OVL",
+  isNotAvailable = "TUT_Got_INV_BoxCutter_BR"
+})

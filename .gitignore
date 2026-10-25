@@ -1,0 +1,11 @@
+# Project X game folder: sources only — Lua, PNG, WAV, xsheets, models, BIK video.
+# Built packs (.his, Ciftree .cif/.dat) are made by Tools/px.py at build time.
+.DS_Store
+*.psd
+.backup_*/
+.px-*
+*.his
+*.ogg
+# TUT_Node_SC is the one stock script no decompiler handles — it stays compiled
+*.cif
+!Ciftree/TUT_Node_SC.cif
